@@ -1,0 +1,12 @@
+
+server:
+  port: 80
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://www.baize.live:3306/hhxtdb
+    username: root
+    password: SS111827jj!
+    type: com.alibaba.druid.pool.DruidDataSource
+
