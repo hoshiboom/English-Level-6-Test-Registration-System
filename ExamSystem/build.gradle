@@ -5,7 +5,7 @@ plugins {
 }
 
 group = 'com.example'
-version = '0.0.1-SNAPSHOT'
+version = '1.0'
 sourceCompatibility = '1.8'
 
 configurations {
@@ -45,6 +45,7 @@ dependencies {
     implementation 'javax.mail:mail:1.4.7' // 邮件mail
     implementation 'commons-codec:commons-codec' // 加解密
     implementation 'com.aliyun:aliyun-java-sdk-dysmsapi:1.1.0' // 阿里云
+    implementation 'com.alibaba:fastjson:1.2.76'    // fastjson,转json字符串
     implementation 'org.json:json:20220320' // JSON
 
     implementation 'io.jsonwebtoken:jjwt-api:0.11.2'

@@ -1,0 +1,1 @@
+xcopy ".\src\main\resources\application.yml.host" ".\src\main\resources\application.yml" /y

@@ -1,0 +1,1 @@
+xcopy ".\src\main\resources\application.yml.remote" ".\src\main\resources\application.yml" /y
