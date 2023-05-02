@@ -3,6 +3,7 @@ package com.example.examsystem.utils;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
+import io.jsonwebtoken.security.Keys;
 
 
 import javax.crypto.spec.SecretKeySpec;
@@ -11,7 +12,9 @@ import java.util.Date;
 import java.util.Map;
 
 public class JwtUtils {
-    private static String signKey = "oneappleadaykeepsthedoctorawayenjoyyourapples";
+
+    private static final Key signKey = Keys.secretKeyFor(SignatureAlgorithm.HS256);
+
     private static Long expire = 43200000L;
 
     /**
@@ -21,12 +24,11 @@ public class JwtUtils {
      * @return
      */
     public static String generateToken(Map<String, Object> claims) {
-        byte[] apiKeySecretBytes = signKey.getBytes();
-        Key signingKey = new SecretKeySpec(apiKeySecretBytes, SignatureAlgorithm.HS256.getJcaName());
+
         return Jwts.builder()
                 .setClaims(claims)
                 .setExpiration(new Date(System.currentTimeMillis() + expire))
-                .signWith(signingKey)
+                .signWith(signKey)
                 .compact();
     }
 

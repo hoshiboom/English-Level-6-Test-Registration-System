@@ -1,5 +1,6 @@
 package com.example.examsystem.dto;
 
+import com.google.gson.annotations.SerializedName;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
@@ -12,8 +13,10 @@ import java.util.Date;
 public class Response {
     private Integer code;
     private String msg;
+    @SerializedName(value = "data")//Gson的注解，用于data为null时的正确序列化
     private Object data;
     private Date date;
+    @SerializedName(value = "token")
     private String token;
     public Response(ResponseEnum responseEnum, Object data) {
         this.msg = responseEnum.getMsg();

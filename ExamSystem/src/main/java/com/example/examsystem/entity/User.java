@@ -9,17 +9,16 @@ import lombok.experimental.Accessors;
 
 import java.io.Serializable;
 
-//MyBatis ORM(Object-Relational Mapping)
 @Data   //set、get
 @NoArgsConstructor  //无参构造函数
 @AllArgsConstructor //全参构造函数
 @Accessors(chain =true)
-public class Admin implements Serializable {    //可序列化，方便保存对象
+public class User implements Serializable {    //可序列化，方便保存对象
     @TableId(value = "id",type= IdType.AUTO)
     private Integer id;
     private String name;
     private String password;
-        //主键
+    //主键
     private Integer number;//工号
     private String email;
 

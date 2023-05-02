@@ -35,8 +35,8 @@ public class LoginController {
         if (a != null) {
             Map<String , Object> claims = new HashMap<>();
             claims.put("id", a.getId());
-            claims.put("roleId", a.getRoleId());
-            claims.put("username",a.getUsername());
+            claims.put("roleId", 1);
+            claims.put("username",a.getName());
             return new Response(ResponseEnum.Login_Success,JwtUtils.generateToken(claims));
         }
         else{

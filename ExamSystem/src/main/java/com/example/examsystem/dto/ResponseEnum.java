@@ -29,6 +29,42 @@ public class ResponseEnum {
     public static final ResponseEnum Logout_Success = new ResponseEnum(2001061, "退出登录成功");
 
     // ============================================= AdminController ============================================= //
+    public static final ResponseEnum List_Admin_Success = new ResponseEnum(2002011,"获得管理员列表成功");
+    public static final ResponseEnum List_Admin_Failure = new ResponseEnum(2002010,"获得管理员列表失败");
+    public static final ResponseEnum Get_Admin_Success = new ResponseEnum(2002021,"查询管理员成功");
+    public static final ResponseEnum Get_Admin_Failure = new ResponseEnum(2002020,"查询管理员失败");
+    public static final ResponseEnum Delete_Admin_Success = new ResponseEnum(2002031,"删除管理员成功");
+    public static final ResponseEnum Delete_Admin_Failure = new ResponseEnum(2002030,"删除管理员失败");
+    public static final ResponseEnum Update_Admin_Success = new ResponseEnum(2002041,"更新管理员成功");
+    public static final ResponseEnum Update_Admin_Failure = new ResponseEnum(2002040,"更新管理员失败");
+    public static final ResponseEnum Add_Admin_Success = new ResponseEnum(2002051,"添加管理员成功");
+    public static final ResponseEnum Add_Admin_Failure = new ResponseEnum(2002050,"添加管理员失败");
+
+    // ============================================= StudentController ============================================= //
+    public static final ResponseEnum List_Student_Success = new ResponseEnum(2003011,"获得学生列表成功");
+    public static final ResponseEnum List_Student_Failure = new ResponseEnum(2003010,"获得学生列表失败");
+    public static final ResponseEnum Get_Student_Success = new ResponseEnum(2003021,"查询学生成功");
+    public static final ResponseEnum Get_Student_Failure = new ResponseEnum(2003020,"查询学生失败");
+    public static final ResponseEnum Delete_Student_Success = new ResponseEnum(2003031,"删除学生成功");
+    public static final ResponseEnum Delete_Student_Failure = new ResponseEnum(2003030,"删除学生失败");
+    public static final ResponseEnum Update_Student_Success = new ResponseEnum(2003041,"更新学生成功");
+    public static final ResponseEnum Update_Student_Failure = new ResponseEnum(2003040,"更新学生失败");
+    public static final ResponseEnum Add_Student_Success = new ResponseEnum(2003051,"添加学生成功");
+    public static final ResponseEnum Add_Student_Failure = new ResponseEnum(2003050,"添加学生失败");
+
+    // ============================================= TeacherController ============================================= //
+    public static final ResponseEnum List_Teacher_Success = new ResponseEnum(2004011,"获得教师列表成功");
+    public static final ResponseEnum List_Teacher_Failure = new ResponseEnum(2004010,"获得教师列表失败");
+    public static final ResponseEnum Get_Teacher_Success = new ResponseEnum(2004021,"查询教师成功");
+    public static final ResponseEnum Get_Teacher_Failure = new ResponseEnum(2004020,"查询教师失败");
+    public static final ResponseEnum Delete_Teacher_Success = new ResponseEnum(2004031,"删除教师成功");
+    public static final ResponseEnum Delete_Teacher_Failure = new ResponseEnum(2004030,"删除教师失败");
+    public static final ResponseEnum Update_Teacher_Success = new ResponseEnum(2004041,"更新教师成功");
+    public static final ResponseEnum Update_Teacher_Failure = new ResponseEnum(2004040,"更新教师失败");
+    public static final ResponseEnum Add_Teacher_Success = new ResponseEnum(2004051,"添加教师成功");
+    public static final ResponseEnum Add_Teacher_Failure = new ResponseEnum(2004050,"添加教师失败");
+
+    // ============================================= ExamController ============================================= //
 
 
     // ============================================= 通用 ============================================= //
@@ -53,6 +89,7 @@ public class ResponseEnum {
     public static final ResponseEnum Write_File_Failure = new ResponseEnum(500010, "写文件失败");
     public static final ResponseEnum Create_Dir_Failure = new ResponseEnum(500020, "创建目录失败");
     public static final ResponseEnum Delete_File_Failure = new ResponseEnum(500030, "删除文件失败");
+
 
 
     final String msg;

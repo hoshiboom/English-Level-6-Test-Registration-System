@@ -12,3 +12,6 @@ spring:
 mybatis:
   configuration:
     log-impl:  org.apache.ibatis.logging.stdout.StdOutImpl
+logging:
+  charset:
+    console: UTF-8
