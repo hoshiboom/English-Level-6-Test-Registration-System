@@ -64,6 +64,19 @@ public class ResponseEnum {
     public static final ResponseEnum Add_Teacher_Success = new ResponseEnum(2004051,"添加教师成功");
     public static final ResponseEnum Add_Teacher_Failure = new ResponseEnum(2004050,"添加教师失败");
 
+    // ============================================= QuestionController ============================================= //
+    public static final ResponseEnum List_Question_Success = new ResponseEnum(2005011,"获得问题列表成功");
+    public static final ResponseEnum List_Question_Failure = new ResponseEnum(2005010,"获得问题列表失败");
+    public static final ResponseEnum Get_Question_Success = new ResponseEnum(2005021,"查询问题成功");
+    public static final ResponseEnum Get_Question_Failure = new ResponseEnum(2005020,"查询问题失败");
+    public static final ResponseEnum Delete_Question_Success = new ResponseEnum(2005031,"删除问题成功");
+    public static final ResponseEnum Delete_Question_Failure = new ResponseEnum(2005030,"删除问题失败");
+    public static final ResponseEnum Update_Question_Success = new ResponseEnum(2005041,"更新问题成功");
+    public static final ResponseEnum Update_Question_Failure = new ResponseEnum(2005040,"更新问题失败");
+    public static final ResponseEnum Add_Question_Success = new ResponseEnum(2005051,"添加问题成功");
+    public static final ResponseEnum Add_Question_Failure = new ResponseEnum(2005050,"添加问题失败");
+
+
     // ============================================= ExamController ============================================= //
 
 

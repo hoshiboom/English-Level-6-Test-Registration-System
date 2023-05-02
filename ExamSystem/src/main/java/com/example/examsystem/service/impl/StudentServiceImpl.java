@@ -30,14 +30,14 @@ public class StudentServiceImpl extends ServiceImpl<StudentMapper, Student> impl
 
     @Override
     @Transactional(rollbackFor = Exception.class)
-    public Response insertStudent(Student Student){
-        if(Student.getNumber()!=null) {
-            Student Student1 = this.getOne(new QueryWrapper<Student>().eq("number", Student.getNumber()));
+    public Response insertStudent(Student student){
+        if(student.getNumber()!=null) {
+            Student Student1 = this.getOne(new QueryWrapper<Student>().eq("number", student.getNumber()));
             if (Student1!= null) {
                 return new Response(ResponseEnum.Add_Student_Failure);
             }
         }
-        studentMapper.insert(Student);
+        studentMapper.insert(student);
         return new Response(ResponseEnum.Add_Student_Success);
     }
     @Override

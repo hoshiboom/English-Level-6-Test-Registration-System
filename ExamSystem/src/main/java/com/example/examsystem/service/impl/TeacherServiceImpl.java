@@ -30,24 +30,24 @@ public class TeacherServiceImpl extends ServiceImpl<TeacherMapper, Teacher> impl
 
     @Override
     @Transactional(rollbackFor = Exception.class)
-    public Response insertTeacher(Teacher Teacher){
-        if(Teacher.getNumber()!=null) {
-            Teacher Teacher1 = this.getOne(new QueryWrapper<Teacher>().eq("number", Teacher.getNumber()));
+    public Response insertTeacher(Teacher teacher){
+        if(teacher.getNumber()!=null) {
+            Teacher Teacher1 = this.getOne(new QueryWrapper<Teacher>().eq("number", teacher.getNumber()));
             if (Teacher1!= null) {
                 return new Response(ResponseEnum.Add_Teacher_Failure);
             }
         }
-        teacherMapper.insert(Teacher);
+        teacherMapper.insert(teacher);
         return new Response(ResponseEnum.Add_Teacher_Success);
     }
     @Override
     @Transactional(rollbackFor = Exception.class)
-    public Response updateTeacher(Teacher Teacher){
+    public Response updateTeacher(Teacher teacher){
         Teacher Teachertest = this.getOne(
-                new QueryWrapper<Teacher>().eq("id",Teacher.getId())
+                new QueryWrapper<Teacher>().eq("id",teacher.getId())
         );
         if (Teachertest == null) return new Response(ResponseEnum.Update_Teacher_Failure);
-        if(!this.updateById(Teacher)){
+        if(!this.updateById(teacher)){
             throw new DaoException(ResponseEnum.Update_Teacher_Failure);
         }
         return new Response(ResponseEnum.Update_Teacher_Success);
