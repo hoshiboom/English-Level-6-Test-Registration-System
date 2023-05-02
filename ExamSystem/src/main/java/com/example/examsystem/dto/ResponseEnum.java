@@ -77,8 +77,17 @@ public class ResponseEnum {
     public static final ResponseEnum Add_Question_Failure = new ResponseEnum(2005050,"添加问题失败");
 
 
-    // ============================================= ExamController ============================================= //
-
+    // ============================================= PaperinfoController ============================================= //
+    public static final ResponseEnum List_Paperinfo_Success = new ResponseEnum(2006011,"获得试卷列表成功");
+    public static final ResponseEnum List_Paperinfo_Failure = new ResponseEnum(2006010,"获得试卷列表失败");
+    public static final ResponseEnum Get_Paperinfo_Success = new ResponseEnum(2006021,"查询试卷成功");
+    public static final ResponseEnum Get_Paperinfo_Failure = new ResponseEnum(2006020,"查询试卷失败");
+    public static final ResponseEnum Delete_Paperinfo_Success = new ResponseEnum(2006031,"删除试卷成功");
+    public static final ResponseEnum Delete_Paperinfo_Failure = new ResponseEnum(2006030,"删除试卷失败");
+    public static final ResponseEnum Update_Paperinfo_Success = new ResponseEnum(2006041,"更新试卷成功");
+    public static final ResponseEnum Update_Paperinfo_Failure = new ResponseEnum(2006040,"更新试卷失败");
+    public static final ResponseEnum Add_Paperinfo_Success = new ResponseEnum(2006051,"添加试卷成功");
+    public static final ResponseEnum Add_Paperinfo_Failure = new ResponseEnum(2006050,"添加试卷失败");
 
     // ============================================= 通用 ============================================= //
     public static final ResponseEnum Hello_World = new ResponseEnum(100000, "你好, 世界! 你好, 朋友!");
