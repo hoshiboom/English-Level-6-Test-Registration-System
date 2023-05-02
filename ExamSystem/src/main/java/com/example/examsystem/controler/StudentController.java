@@ -51,7 +51,7 @@ public class StudentController {
         return new Response(ResponseEnum.Get_Student_Success, Student);
     }
 
-    //根据id添加用户信息
+    //添加用户信息
     @RequestMapping(value = "/student", method = RequestMethod.POST)
     public Response addStudent(@NonNull @RequestParam("name") String name,
                                @NonNull @RequestParam("password") String password,
@@ -81,7 +81,7 @@ public class StudentController {
     }
 
     //根据id删除用户信息
-    @RequestMapping(value = "/Student/{id}", method = RequestMethod.DELETE)
+    @RequestMapping(value = "/student/{id}", method = RequestMethod.DELETE)
     public Response deleteStudent(@PathVariable("id") Integer id) {
         return studentService.deleteStudent(id);
     }
