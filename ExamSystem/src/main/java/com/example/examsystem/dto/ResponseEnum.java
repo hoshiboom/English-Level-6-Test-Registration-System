@@ -89,6 +89,19 @@ public class ResponseEnum {
     public static final ResponseEnum Add_Paperinfo_Success = new ResponseEnum(2006051,"添加试卷成功");
     public static final ResponseEnum Add_Paperinfo_Failure = new ResponseEnum(2006050,"添加试卷失败");
 
+    // ============================================= PaperorgController ============================================= //
+    public static final ResponseEnum List_Paperorg_Success = new ResponseEnum(2007011,"获得试卷题目列表成功");
+    public static final ResponseEnum List_Paperorg_Failure = new ResponseEnum(2007010,"获得试卷题目列表失败");
+    public static final ResponseEnum Get_Paperorg_Success = new ResponseEnum(2007021,"查询试卷题目成功");
+    public static final ResponseEnum Get_Paperorg_Failure = new ResponseEnum(2007020,"查询试卷题目失败");
+    public static final ResponseEnum Delete_Paperorg_Success = new ResponseEnum(2007031,"删除试卷题目成功");
+    public static final ResponseEnum Delete_Paperorg_Failure = new ResponseEnum(2007030,"删除试卷题目失败");
+    public static final ResponseEnum Update_Paperorg_Success = new ResponseEnum(2007041,"更新试卷题目成功");
+    public static final ResponseEnum Update_Paperorg_Failure = new ResponseEnum(2007040,"更新试卷题目失败");
+    public static final ResponseEnum Add_Paperorg_Success = new ResponseEnum(2007051,"添加试卷题目成功");
+    public static final ResponseEnum Add_Paperorg_Failure = new ResponseEnum(2007050,"添加试卷题目失败");
+
+
     // ============================================= SignupController ============================================= //
     public static final ResponseEnum List_Signup_Success = new ResponseEnum(2007011,"获得报名考试列表成功");
     public static final ResponseEnum List_Signup_Failure = new ResponseEnum(2007010,"获得报名考试列表失败");
@@ -100,6 +113,18 @@ public class ResponseEnum {
     public static final ResponseEnum Update_Signup_Failure = new ResponseEnum(2007040,"更新报名考试失败");
     public static final ResponseEnum Add_Signup_Success = new ResponseEnum(2007051,"添加报名考试成功");
     public static final ResponseEnum Add_Signup_Failure = new ResponseEnum(2007050,"添加报名考试失败");
+
+    // ============================================= DoandcheckController ============================================= //
+    public static final ResponseEnum List_Doandcheck_Success = new ResponseEnum(2008011,"获得作答情况列表成功");
+    public static final ResponseEnum List_Doandcheck_Failure = new ResponseEnum(2008010,"获得作答情况列表失败");
+    public static final ResponseEnum Get_Doandcheck_Success = new ResponseEnum(2008021,"查询作答成功");
+    public static final ResponseEnum Get_Doandcheck_Failure = new ResponseEnum(2008020,"查询作答失败");
+    public static final ResponseEnum Delete_Doandcheck_Success = new ResponseEnum(2008031,"删除作答成功");
+    public static final ResponseEnum Delete_Doandcheck_Failure = new ResponseEnum(2008030,"删除作答失败");
+    public static final ResponseEnum Update_Doandcheck_Success = new ResponseEnum(2008041,"更新作答成功");
+    public static final ResponseEnum Update_Doandcheck_Failure = new ResponseEnum(2008040,"更新作答失败");
+    public static final ResponseEnum Add_Doandcheck_Success = new ResponseEnum(2008041,"新增作答成功");
+    public static final ResponseEnum Add_Doandcheck_Failure = new ResponseEnum(2008040,"新增作答失败");
 
 
     // ============================================= 通用 ============================================= //

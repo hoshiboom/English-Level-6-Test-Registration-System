@@ -81,10 +81,11 @@ public class QuestionController {
                                    @RequestParam("optionD") String optionD,
                                    @RequestParam("answer") String answer,
                                    @RequestParam("typeId") Integer typeId,
-                                   @RequestParam("score") Integer score
+                                   @RequestParam("score") Integer score,
+                                   @PathVariable("id") Integer id
     ) {
 
-        Question question = new Question().setQuestionName(questionName).setQuestionDescription(questionDescription)
+        Question question = new Question().setId(id).setQuestionName(questionName).setQuestionDescription(questionDescription)
                 .setOptionA(optionA).setOptionB(optionB).setOptionC(optionC).setOptionD(optionD).setAnswer(answer).setTypeId(typeId).setScore(score);
         return questionService.updateQuestion(question);
     }
