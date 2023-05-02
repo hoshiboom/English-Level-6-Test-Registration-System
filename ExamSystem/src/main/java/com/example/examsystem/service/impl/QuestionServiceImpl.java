@@ -33,12 +33,12 @@ public class QuestionServiceImpl extends ServiceImpl<QuestionMapper, Question> i
     }
     @Override
     @Transactional(rollbackFor = Exception.class)
-    public Response updateQuestion(Question Question){
+    public Response updateQuestion(Question question){
         Question questiontest = this.getOne(
-                new QueryWrapper<Question>().eq("id",Question.getId())
+                new QueryWrapper<Question>().eq("id",question.getId())
         );
         if (questiontest == null) return new Response(ResponseEnum.Update_Question_Failure);
-        if(!this.updateById(Question)){
+        if(!this.updateById(question)){
             throw new DaoException(ResponseEnum.Update_Question_Failure);
         }
         return new Response(ResponseEnum.Update_Question_Success);

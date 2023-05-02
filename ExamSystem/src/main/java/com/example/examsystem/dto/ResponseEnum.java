@@ -89,6 +89,19 @@ public class ResponseEnum {
     public static final ResponseEnum Add_Paperinfo_Success = new ResponseEnum(2006051,"添加试卷成功");
     public static final ResponseEnum Add_Paperinfo_Failure = new ResponseEnum(2006050,"添加试卷失败");
 
+    // ============================================= SignupController ============================================= //
+    public static final ResponseEnum List_Signup_Success = new ResponseEnum(2007011,"获得报名考试列表成功");
+    public static final ResponseEnum List_Signup_Failure = new ResponseEnum(2007010,"获得报名考试列表失败");
+    public static final ResponseEnum Get_Signup_Success = new ResponseEnum(2007021,"查询报名考试成功");
+    public static final ResponseEnum Get_Signup_Failure = new ResponseEnum(2007020,"查询报名考试失败");
+    public static final ResponseEnum Delete_Signup_Success = new ResponseEnum(2007031,"删除报名考试成功");
+    public static final ResponseEnum Delete_Signup_Failure = new ResponseEnum(2007030,"删除报名考试失败");
+    public static final ResponseEnum Update_Signup_Success = new ResponseEnum(2007041,"更新报名考试成功");
+    public static final ResponseEnum Update_Signup_Failure = new ResponseEnum(2007040,"更新报名考试失败");
+    public static final ResponseEnum Add_Signup_Success = new ResponseEnum(2007051,"添加报名考试成功");
+    public static final ResponseEnum Add_Signup_Failure = new ResponseEnum(2007050,"添加报名考试失败");
+
+
     // ============================================= 通用 ============================================= //
     public static final ResponseEnum Hello_World = new ResponseEnum(100000, "你好, 世界! 你好, 朋友!");
     public static final ResponseEnum TEST_TEST = new ResponseEnum(100001, "测试返回值");
