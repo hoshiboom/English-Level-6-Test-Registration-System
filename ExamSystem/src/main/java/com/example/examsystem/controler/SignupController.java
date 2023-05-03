@@ -5,7 +5,6 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.example.examsystem.dto.Response;
 import com.example.examsystem.dto.ResponseEnum;
 import com.example.examsystem.entity.Signup;
-import com.example.examsystem.mapper.SignupMapper;
 import com.example.examsystem.service.SignupService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.validation.annotation.Validated;
@@ -22,9 +21,6 @@ public class SignupController {
     @Resource
     private SignupService signupService;
 
-    @Resource
-    private SignupMapper signupMapper;
-
 
     //分页获得列表
     @RequestMapping(value = "/signup", method = RequestMethod.GET)
@@ -34,7 +30,7 @@ public class SignupController {
         if (size == null || size <= 0 || size > 10) size = 10;
 
         Page<Signup> page = signupService.page(new Page<>(curpage, size),
-                new QueryWrapper<Signup>());
+                new QueryWrapper<>());
         return new Response(ResponseEnum.List_Signup_Success, page);
 
     }

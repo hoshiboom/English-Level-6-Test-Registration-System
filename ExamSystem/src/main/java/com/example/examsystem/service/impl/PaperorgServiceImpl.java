@@ -1,13 +1,16 @@
 package com.example.examsystem.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.example.examsystem.dto.Response;
 import com.example.examsystem.dto.ResponseEnum;
 import com.example.examsystem.entity.Paperorg;
+import com.example.examsystem.entity.Question;
 import com.example.examsystem.exception.DaoException;
 import com.example.examsystem.mapper.PaperorgMapper;
 import com.example.examsystem.service.PaperorgService;
+import com.example.examsystem.service.QuestionService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -22,6 +25,8 @@ public class PaperorgServiceImpl extends ServiceImpl<PaperorgMapper, Paperorg> i
 
     @Resource
     private PaperorgMapper paperorgMapper;
+    @Resource
+    private QuestionService questionService;
 
 
     @Override
@@ -54,5 +59,18 @@ public class PaperorgServiceImpl extends ServiceImpl<PaperorgMapper, Paperorg> i
             throw new DaoException(ResponseEnum.Delete_Paperorg_Failure);
         }
         return new Response(ResponseEnum.Delete_Paperorg_Success);
+    }
+
+    @Override
+    public Response getPaperorgDetails(Integer id, Integer curpage, Integer size) {
+        Paperorg paperorg = this.getOne(
+                new QueryWrapper<Paperorg>().eq("id",id)
+        );
+        Page<Question> page = questionService.page(new Page<>(curpage, size),
+            new QueryWrapper<Question>().in("id",paperorg.getQuestionId())
+        );
+
+        if (page == null) return new Response(ResponseEnum.Get_Paperorg_Details_Failure);
+        return new Response(ResponseEnum.Get_Paperorg_Details_Success,page);
     }
 }

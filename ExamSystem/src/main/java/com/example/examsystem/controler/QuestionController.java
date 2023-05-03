@@ -7,7 +7,6 @@ import com.example.examsystem.dto.ResponseEnum;
 import com.example.examsystem.entity.Question;
 import com.example.examsystem.mapper.QuestionMapper;
 import com.example.examsystem.service.QuestionService;
-import lombok.NonNull;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -50,6 +49,21 @@ public class QuestionController {
         );
         if (Question == null) return new Response(ResponseEnum.Get_Question_Failure);
         return new Response(ResponseEnum.Get_Question_Success, Question);
+    }
+
+    @RequestMapping(value = "/questionByName", method = RequestMethod.GET)
+    public Response getQuestionByName(@RequestParam("questionName") String questionName,
+                                      @RequestParam(required = false) Integer curpage,
+                                      @RequestParam(required = false) Integer size
+    ) {
+        if (curpage == null || curpage <= 0) curpage = 1;
+        if (size == null || size <= 0 || size > 20) size = 20;
+        Page<Question> page = questionService.page(
+                new Page<>(curpage, size),
+                new QueryWrapper<Question>().like("question_name", questionName + "%")
+        );
+        if (page == null) return new Response(ResponseEnum.Get_Question_Failure);
+        return new Response(ResponseEnum.Get_Question_Success, page);
     }
 
     //添加信息

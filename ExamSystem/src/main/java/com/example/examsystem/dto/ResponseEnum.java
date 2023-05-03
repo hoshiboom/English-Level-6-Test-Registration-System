@@ -100,6 +100,8 @@ public class ResponseEnum {
     public static final ResponseEnum Update_Paperorg_Failure = new ResponseEnum(2007040,"更新试卷题目失败");
     public static final ResponseEnum Add_Paperorg_Success = new ResponseEnum(2007051,"添加试卷题目成功");
     public static final ResponseEnum Add_Paperorg_Failure = new ResponseEnum(2007050,"添加试卷题目失败");
+    public static final ResponseEnum Get_Paperorg_Details_Success =new ResponseEnum(2007061,"获得试卷详细题目成功");
+    public static final ResponseEnum Get_Paperorg_Details_Failure = new ResponseEnum(2007060,"获得试卷详细题目失败");
 
 
     // ============================================= SignupController ============================================= //

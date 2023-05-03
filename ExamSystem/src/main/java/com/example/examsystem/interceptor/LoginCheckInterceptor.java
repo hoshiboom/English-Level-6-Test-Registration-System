@@ -1,7 +1,12 @@
 package com.example.examsystem.interceptor;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.example.examsystem.dto.Response;
 import com.example.examsystem.dto.ResponseEnum;
+import com.example.examsystem.entity.Signup;
+import com.example.examsystem.entity.Token;
+import com.example.examsystem.service.SignupService;
+import com.example.examsystem.service.TokenService;
 import com.example.examsystem.utils.JwtUtils;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -12,12 +17,18 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.annotation.Resource;
+import javax.security.auth.callback.TextOutputCallback;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 @Slf4j
 @Component  //spring注解，将其实例化为一个bean
 public class LoginCheckInterceptor implements HandlerInterceptor {
+    @Resource
+    private SignupService signupService;
+    @Resource
+    private TokenService tokenService;
     //ctrl+o
     @Override   //目标方法运行前运行，返回true：放行
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
@@ -35,9 +46,9 @@ public class LoginCheckInterceptor implements HandlerInterceptor {
         //</editor-fold>
         log.info("继续返回执行");
         //3.获取请求头的令牌
-        String token = request.getHeader("token");
+        String tokenvalue = request.getHeader("token");
         //4.判断令牌是否为空
-        if(token == null){
+        if(tokenvalue == null){
             log.info("token为空");
             Response response1 = new Response(ResponseEnum.Login_Failure);
             Gson gson = new GsonBuilder().serializeNulls().create();//用于有参数为null时的正确序列化，如果不需要为null初始化则直接new Gson()即可
@@ -47,8 +58,19 @@ public class LoginCheckInterceptor implements HandlerInterceptor {
         }
         //5.判断令牌是否正确
         try {
-            Claims claim = JwtUtils.parseJWT(token);
-            Integer roleId = claim.get("roleId",Integer.class);
+            Token token1 = tokenService.getOne(
+                    new QueryWrapper<Token>().eq("value",tokenvalue)
+            );
+            Integer roleId, id;
+            if(token1 == null){
+                Claims claim = JwtUtils.parseJWT(tokenvalue);
+                roleId = claim.get("roleId",Integer.class);
+                id = claim.get("id",Integer.class);
+            }
+            else{
+                roleId = token1.getRoleId();
+                id = token1.getUserId();
+            }
             //boolean adminRole = (url.contains("admin")||url.contains("student")||url.contains("teacher")||url.contains())
             if(roleId == 1){//用户是管理员，有全部权限，直接放行
                 return true;
@@ -58,7 +80,13 @@ public class LoginCheckInterceptor implements HandlerInterceptor {
                 return true;
             }
             //用户是学生，对于访问卷子、问题的get请求放行，对于访问doandcheck的post请求也放行，对于学生注册、报名考试的请求放行
-            else if(roleId == 3 && ((url.contains("paper")||url.contains("question"))&&(request.getMethod()=="GET"))||(url.contains("doandcheck")&&request.getMethod()!="DELETE")||(url.contains("student")&&request.getMethod()=="POST")||url.contains("signup")){
+            else if(roleId == 3 && ((url.contains("paper")||url.contains("question"))&&(request.getMethod().equals("GET")))||(url.contains("doandcheck")&&request.getMethod().equals("DELETE"))||(url.contains("student")&&request.getMethod().equals("POST"))||url.contains("signup")){
+                if(url.contains("paperorg")||url.contains("question")){//判断有没有报名，未报名返回false
+                    Signup signup=signupService.getOne(new QueryWrapper<Signup>().eq("student_id",id));
+                    if(signup==null){
+                        return false;
+                    }
+                }
                 return true;
             }
             else{
