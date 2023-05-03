@@ -10,8 +10,8 @@ import org.springframework.stereotype.Repository;
 @Mapper //MyBatis注解，Mapper指示这是一个mapper接口，映射到sql语句，BaseMapper接口是包含CRUD的通用接口
 @Repository //Spring注解，Repository指示这个接口与数据库交互，spring将会自动生成一个TeacherMapper实例作为spring bean，可以将其注入到依赖它的其他组件中
 public interface TeacherMapper extends BaseMapper<Teacher> {
-    @Select("select * from teacher where name = #{username}")
-    Teacher selectByName(String username);
+    @Select("select * from teacher where name = #{name}")
+    Teacher selectByName(String name);
 
     @Select("select * from teacher where number = #{number} and password = #{password}")
     Teacher selectByNumberAndPassword(Integer number, String password);

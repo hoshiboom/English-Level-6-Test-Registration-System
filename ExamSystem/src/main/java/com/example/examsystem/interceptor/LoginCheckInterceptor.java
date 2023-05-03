@@ -5,6 +5,7 @@ import com.example.examsystem.dto.ResponseEnum;
 import com.example.examsystem.utils.JwtUtils;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import io.jsonwebtoken.Claims;
 import lombok.extern.slf4j.Slf4j;
 
 import org.springframework.stereotype.Component;
@@ -23,14 +24,14 @@ public class LoginCheckInterceptor implements HandlerInterceptor {
         //1.获取请求url
         String url = request.getRequestURL().toString();
         //2.判断url是login则放行
-//        if(url.contains("login/admin") || url.contains("login/teacher") || url.contains("login/student")){//有漏洞：被恶意构造?login=...
-//            return true;
-//        }
-
-        //<editor-fold desc="调试阶段全部放行">
-        if(true){
+        if(url.contains("login/admin") || url.contains("login/teacher") || url.contains("login/student")){//有漏洞：被恶意构造?login=...
             return true;
         }
+
+        //<editor-fold desc="调试阶段全部放行">
+//        if(true){
+//            return true;
+//        }
         //</editor-fold>
         log.info("继续返回执行");
         //3.获取请求头的令牌
@@ -46,7 +47,24 @@ public class LoginCheckInterceptor implements HandlerInterceptor {
         }
         //5.判断令牌是否正确
         try {
-            JwtUtils.parseJWT(token);
+            Claims claim = JwtUtils.parseJWT(token);
+            Integer roleId = claim.get("roleId",Integer.class);
+            //boolean adminRole = (url.contains("admin")||url.contains("student")||url.contains("teacher")||url.contains())
+            if(roleId == 1){//用户是管理员，有全部权限，直接放行
+                return true;
+            }
+            //用户是教师，对于访问卷子、问题、批改、注册的请求放行
+            else if(roleId == 2 && (url.contains("paper")||url.contains("question")||url.contains("doandcheck")||(url.contains("teacher")&&request.getMethod()=="POST"))){
+                return true;
+            }
+            //用户是学生，对于访问卷子、问题的get请求放行，对于访问doandcheck的post请求也放行，对于学生注册、报名考试的请求放行
+            else if(roleId == 3 && ((url.contains("paper")||url.contains("question"))&&(request.getMethod()=="GET"))||(url.contains("doandcheck")&&request.getMethod()!="DELETE")||(url.contains("student")&&request.getMethod()=="POST")||url.contains("signup")){
+                return true;
+            }
+            else{
+                return false;
+            }
+
         } catch (Exception e) {
             log.info("token解析失败，返回未登录错误信息");
             Response response1 = new Response(ResponseEnum.Login_Failure);
@@ -57,7 +75,7 @@ public class LoginCheckInterceptor implements HandlerInterceptor {
         }
 
         //6.放行
-        return true;
+        //return true;
 
     }
 

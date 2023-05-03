@@ -34,7 +34,7 @@ public class AdminController {
         if (curpage == null || curpage <= 0) curpage = 1;
         if (size == null || size <= 0 || size > 10) size = 10;
 
-        Page<Admin> page=adminService.page(new Page<>(curpage,size),new QueryWrapper<Admin>().select("id","username","password","number","email"));
+        Page<Admin> page=adminService.page(new Page<>(curpage,size),new QueryWrapper<Admin>().select("id","name","password","number","email"));
         return new Response(ResponseEnum.List_Admin_Success,page);
 
     }
