@@ -36,6 +36,7 @@ public class LoginCheckInterceptor implements HandlerInterceptor {
         String url = request.getRequestURL().toString();
         //2.判断url是login则放行
         if(url.contains("login/admin") || url.contains("login/teacher") || url.contains("login/student")){//有漏洞：被恶意构造?login=...
+            log.info("Login"+url);
             return true;
         }
 

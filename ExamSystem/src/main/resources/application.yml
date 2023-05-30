@@ -5,9 +5,9 @@ server:
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://127.0.0.1:3306/ExamSystem
+    url: jdbc:mysql://101.43.247.149:3306/ExamSystem
     username: root
-    password: mysql
+    password: Mysql123!
     type: com.alibaba.druid.pool.DruidDataSource
 mybatis:
   configuration:
