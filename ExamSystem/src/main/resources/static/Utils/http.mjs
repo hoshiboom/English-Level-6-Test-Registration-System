@@ -29,7 +29,6 @@ function requests(obj) {
             if(queryParams) obj.path += `?${queryParams}`;
             console.log(obj.path)
         }
-
     } else {
         for(var key in obj.data) {
             urlencoded.append(key,obj.data[key]);
