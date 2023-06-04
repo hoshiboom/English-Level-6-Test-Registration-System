@@ -1,0 +1,445 @@
+/*主框架*/
+body {
+    margin: 0;
+    padding: 0;
+    font-size: 14px;
+    font-family: 'Microsoft yahei', Arial, "Times New Roman", Times, serif, NeeaSimsun-Regular;
+    text-align: left;
+    background: #fff;
+    color: #404040;
+}
+#Header, #Content {
+    width: 1200px;
+    margin: 0 auto;
+    text-align: left;
+    overflow: hidden;
+    clear: both;
+}
+#Header {
+    position: relative;
+}
+#Footer {
+    border-top: 1px solid #ccc;
+}
+#Footer {
+    background: #ddd;
+    margin-top: 0;
+}
+/*Header*/
+.header-top {
+    height: 120px;
+    margin: 0 auto;
+    position: relative;
+}
+.logodiv {
+    float: left;
+    margin-top: 15px;
+}
+.header-top-right {
+    float: right;
+    width: 500px;
+    position: relative;
+    color: #313F61;
+    line-height: 18px;
+    padding-top: 10px;
+    font-size: 12px;
+}
+.n_nav {
+    height: 46px;
+    background-color: #E7E8EB;
+    border-bottom: solid 3px #003E7D;
+    font-weight: bold;
+}
+.header-top-right span {
+    position: absolute;
+    right: 0;
+}
+.header-top-right a {
+    color: #313F61;
+}
+a {
+    text-decoration: none;
+    color: #000;
+}
+.paths {
+    height: 30px;
+    line-height: 30px;
+    /* border-top: solid 7px #003E7D; */
+    border-bottom: solid 1px #DDD;
+    padding-left: 15px;
+}
+/*Content*/
+.condition {
+    float: left;
+    margin: 0 0 30px 0;
+}
+.condition-left {
+    width: 820px;
+    float: left;
+    border-right: solid 1px #ddd;
+    position: relative;
+    margin: 0 0 30px 0;
+    padding: 17px 20px 0 20px;
+    overflow: hidden;
+}
+.condition-right {
+    width: 317px !important;
+    margin-left: 20px !important;
+}
+.intr {
+    float: left;
+    width: 240px;
+    margin-left: 40px;
+    text-align: left;
+    margin-top: 20px;
+}
+.intr ul li {
+    padding-left: 20px;
+    line-height: 200%;
+    margin-bottom: 20px;
+}
+.c_tits {
+    height: 30px;
+    line-height: 30px;
+    color: #3083c7;
+    font-size: 22px;
+    text-align: center;
+    margin: 40px 0;
+}
+.container {
+    margin-left: auto;
+    margin-right: auto;
+    /* width: 862px; */
+}
+.container #CurrentlyTranslation p {
+    margin-bottom: 20px;
+}
+.container #CurrentlyArticle p {
+    margin-bottom: 20px;
+}
+.container h1 {
+    font-size: 28px;
+    line-height: 200%;
+    text-align: center;
+}
+p {
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+}
+
+.zlykuang {
+    border: none;
+    width: auto;
+}
+table {
+    border-collapse: separate;
+    text-indent: initial;
+    border-spacing: 2px;
+}
+.zlykuang table {
+    border: 1px solid #284;
+}
+tbody {
+    display: table-row-group;
+    vertical-align: middle;
+    border-color: inherit;
+}
+tr {
+    display: table-row;
+    vertical-align: inherit;
+    border-color: inherit;
+}
+.zlykuang td {
+    padding: 8px 5px;
+    color: #000;
+    min-width: 112px;
+}
+td {
+    display: table-cell;
+    vertical-align: inherit;
+}
+.container select {
+    height: 30px;
+    width: 280px;
+    border-radius: 3px;
+    border: solid 1px #A9A9A9;
+    color: #757575;
+    background: #fff;
+}
+.t_1 {
+    right: -168px;
+}
+.tip1 {
+    white-space: nowrap;
+    position: absolute;
+    color: red;
+    top: 0;
+    line-height: 40px;
+    width: 170px;
+    right: -168px;
+}
+.s1 input {
+    height: 28px;
+    line-height: 27px;
+    width: 500px;
+    border-radius: 5px;
+    border: solid 1px #A9A9A9;
+    padding: 0 5px;
+}
+.s2 input {
+    height: 140px;
+    line-height: 27px;
+    width: 500px;
+    border-radius: 5px;
+    border: solid 1px #A9A9A9;
+    padding: 0 5px;
+}
+.option input {
+    height: 84px;
+    line-height: 27px;
+    width: 500px;
+    border-radius: 5px;
+    border: solid 1px #A9A9A9;
+    padding: 0 5px;
+}
+.alignleft {
+    text-align: left !important;
+}
+.alignright {
+    text-align: right !important;
+}
+input[type="button" i] {
+    appearance: auto;
+    user-select: none;
+    white-space: pre;
+    align-items: flex-start;
+    text-align: center;
+    cursor: default;
+    box-sizing: border-box;
+    background-color: buttonface;
+    color: buttontext;
+    padding: 1px 6px;
+    border-width: 2px;
+    border-style: outset;
+    border-image: initial;
+}
+.btnbox_news {
+    clear: both;
+    display: block;
+    /* border-top: 1px #ddd solid; */
+    padding-top: 0;
+    text-align: center;
+    margin-top: 10px;
+}
+.btnbox_news button, .btnbox_news input {
+    background-image: none;
+    background-color: rgb(13, 163, 226);
+    color: rgb(255, 255, 255);
+    height: 30px;
+    line-height: 30px;
+    cursor: pointer;
+    font-size: 14px;
+    font-family: 微软雅黑;
+    padding: 0px 10px;
+    border-radius: 3px;
+    border-width: initial;
+    border-style: none;
+    border-color: initial;
+    border-image: initial;
+}
+.intr .intrtit {
+    font-size: 18px;
+    padding: 8px 0 20px 40px;
+    border-bottom: #ddd solid 1px;
+    margin-bottom: 30px;
+    position: relative;
+}
+.intr .intrtit i {
+    position: absolute;
+    left: 15px;
+    top: 15px;
+    height: 10px;
+    width: 10px;
+    background-color: #fe8500;
+}
+.intr ul li {
+    padding-left: 10px;
+    line-height: 200%;
+    margin-bottom: 20px;
+}
+
+li {
+    display: list-item;
+    text-align: -webkit-match-parent;
+}
+ul {
+    display: block;
+    list-style-type: disc;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    padding-inline-start: 40px;
+}
+ul, li {
+    list-style: None;
+}
+
+div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, input, p {
+    padding: 0;
+    margin: 0;
+}
+
+.intr .ul1 li em {
+    position: absolute;
+    left: 0px;
+    top: 4px;
+    width: 15px;
+    height: 17px;
+    display: block;
+}
+.intr .ul1 li .em2 {
+    top: 5px;
+    background: url(	https://www.neea.edu.cn/res/Home/structure/170820862.png) center no-repeat;
+}
+em {
+    font-style: italic;
+}
+.zlykuang strong {
+    text-emphasis-color: red;
+
+}
+/*Footer*/
+.footer {
+    height: 110px;
+    background: #f4f4f4;
+    color: #303D5D;
+    text-align: center;
+    font-size: 12px;
+}
+.footer-bottom {
+    width: 1200px;
+    margin-left: -600px;
+    left: 50%;
+    position: absolute;
+}
+.addicon {
+    position: absolute;
+    top: 17px;
+    left: -14px;
+    width: 80px;
+    height: 80px;
+    background: url(https://cjcx.neea.edu.cn/res/Home/structure/170814213.png) center no-repeat;
+}
+.copyright {
+    position: absolute;
+    top: 26px;
+    left: 68px;
+    height: 60px;
+    /* background: url(/res/Home/structure/160330144.png) no-repeat left 8px; */
+    text-align: left;
+    line-height: 180%;
+}
+.motto {
+    position: absolute;
+    top: 37px;
+    right: 60px;
+}
+.linktit {
+    background: url(https://cjcx.neea.edu.cn/res/Home/structure/160930480.jpg) repeat-x left 50%;
+    text-align: left;
+}
+.linktit span {
+    padding: 5px 8px 5px 0;
+    background-color: #f4f4f4;
+}
+.menu li .hide {
+    display: block;
+    height: 30px;
+    line-height: 30px;
+    padding: 0 20px 0 0;
+    margin-left: 50px;
+    background: url(https://cjcx.neea.edu.cn/res/Home/structure/160930481.png) no-repeat right center;
+    color: #303D5D;
+}
+.menu ul li div {
+    display: block;
+    position: absolute;
+    width: 280px;
+    bottom: 31px;
+    border-color: #ccc;
+    border-style: solid;
+    border-width: 0;
+    background: #fff;
+    right: -63px;
+    height: 0px;
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+}
+.menu ul li#hide1 .hide {
+    /* background: url(/res/Home/structure/16081196.png) no-repeat 5px center; */
+    background: none;
+    height: 30px;
+    line-height: 30px;
+    border-radius: 5px;
+    padding-left: 0;
+}
+.menu ul li {
+    float: left;
+    position: relative;
+    margin-right: 15px;
+    /*font-size: 14px;*/
+    text-align: left;
+    font-size: 12px;
+}
+.menu li .hide {
+    display: block;
+    height: 30px;
+    line-height: 30px;
+    padding: 0 20px 0 0;
+    margin-left: 50px;
+    background: url(https://cjcx.neea.edu.cn/res/Home/structure/160930481.png) no-repeat right center;
+    color: #303D5D;
+}
+a {
+    text-decoration: none;
+    color: #000;
+}
+a:-webkit-any-link {
+    color: -webkit-link;
+    cursor: pointer;
+    text-decoration: underline;
+}
+li {
+    display: list-item;
+    text-align: -webkit-match-parent;
+}
+.menu ul li ul li {
+    display: block;
+    background: #fff;
+    color: #000;
+    width: 295px;
+    padding: 0 7px;
+    height: 25px;
+    line-height: 25px;
+    clear: both;
+    float: none;
+    margin: 0;
+}
+ul ul {
+    list-style-type: circle;
+    margin-block-start: 0px;
+    margin-block-end: 0px;
+}
+ul {
+    display: block;
+    list-style-type: disc;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    padding-inline-start: 40px;
+}

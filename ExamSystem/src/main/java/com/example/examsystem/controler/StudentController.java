@@ -55,10 +55,10 @@ public class StudentController {
     @RequestMapping(value = "/student", method = RequestMethod.POST)
     public Response addStudent(@NonNull @RequestParam("name") String name,
                                @NonNull @RequestParam("password") String password,
-                               @RequestParam("number") Integer number,
-                               @RequestParam("phone") String phone,
-                               @RequestParam("idnumber") Integer idnumber,
-                               @RequestParam("email") String email) {
+                               @RequestParam("number") String number,
+                               @RequestParam(value = "phone",required = false) String phone,
+                               @RequestParam("idnumber") String idnumber,
+                               @RequestParam(value = "email",required = false) String email) {
         Student Student = new Student().setName(name).setPassword(password).setEmail(email).setNumber(number).setPhone(phone).setIdNumber(idnumber);
 
 
@@ -70,9 +70,9 @@ public class StudentController {
     public Response updateStudent(@PathVariable("id") Integer id,
                                   @NonNull @RequestParam("name") String name,
                                   @NonNull @RequestParam("password") String password,
-                                  @RequestParam("number") Integer number,
+                                  @RequestParam("number") String number,
                                   @RequestParam("phone") String phone,
-                                  @RequestParam("idnumber") Integer idnumber,
+                                  @RequestParam("idnumber") String idnumber,
                                   @RequestParam("email") String email) {
 
         Student Student = new Student().setId(id).setName(name).setPassword(password).setEmail(email).setNumber(number).setPhone(phone).setIdNumber(idnumber);

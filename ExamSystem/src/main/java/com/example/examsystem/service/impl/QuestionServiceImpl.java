@@ -4,12 +4,9 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.example.examsystem.dto.Response;
 import com.example.examsystem.dto.ResponseEnum;
-import com.example.examsystem.entity.Paperorg;
 import com.example.examsystem.entity.Question;
 import com.example.examsystem.exception.DaoException;
-import com.example.examsystem.mapper.PaperorgMapper;
 import com.example.examsystem.mapper.QuestionMapper;
-import com.example.examsystem.service.PaperorgService;
 import com.example.examsystem.service.QuestionService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -25,8 +22,6 @@ public class QuestionServiceImpl extends ServiceImpl<QuestionMapper, Question> i
 
     @Resource
     private QuestionMapper questionMapper;
-    @Resource
-    private PaperorgMapper paperorgMapper;
 
 
     @Override
@@ -50,15 +45,11 @@ public class QuestionServiceImpl extends ServiceImpl<QuestionMapper, Question> i
     }
 
     @Override
-    @Transactional(rollbackFor = Exception.class)
     public Response deleteQuestion(Integer id) {
         Question questiontest = this.getOne(
                 new QueryWrapper<Question>().eq("id",id)
         );
-        //如果此题已经被组织进试卷则不可删除
-        Paperorg paperorg=paperorgMapper.selectOne(new QueryWrapper<Paperorg>().eq("paperinfo_id",id));
-
-        if (questiontest == null || paperorg != null) return new Response(ResponseEnum.Delete_Question_Failure);
+        if (questiontest == null) return new Response(ResponseEnum.Delete_Question_Failure);
         if(!this.removeById(questiontest)){
             throw new DaoException(ResponseEnum.Delete_Question_Failure);
         }

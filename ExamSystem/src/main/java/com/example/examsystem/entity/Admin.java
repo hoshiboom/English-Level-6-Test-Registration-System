@@ -20,7 +20,7 @@ public class Admin implements Serializable {    //可序列化，方便保存对
     private String name;
     private String password;
         //主键
-    private Integer number;//工号
+    private String number;//工号
     private String email;
 
     private static final long serialVersionUID = 1L;    //序列化和反序列化时校验防止出错，1L表示这是这个类的第一个版本

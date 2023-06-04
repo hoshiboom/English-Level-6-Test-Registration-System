@@ -15,7 +15,7 @@ public class JwtUtils {
 
     private static final Key signKey = Keys.secretKeyFor(SignatureAlgorithm.HS256);
 
-    private static Long expire = 365*30*43200000L;
+    private static Long expire = 43200000L;
 
     /**
      * 生成JWT令牌

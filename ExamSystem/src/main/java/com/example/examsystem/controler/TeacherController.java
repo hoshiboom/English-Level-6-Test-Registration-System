@@ -56,7 +56,7 @@ public class TeacherController {
     @RequestMapping(value = "/teacher", method = RequestMethod.POST)
     public Response addTeacher(@NonNull @RequestParam("name") String name,
                                @NonNull @RequestParam("password") String password,
-                               @RequestParam("number") Integer number,
+                               @RequestParam("number") String number,
                                @RequestParam("phone") String phone,
                                @RequestParam("school") String school,
                                @RequestParam("email") String email) {
@@ -71,7 +71,7 @@ public class TeacherController {
     public Response updateTeacher(@PathVariable("id") Integer id,
                                   @NonNull @RequestParam("name") String name,
                                   @NonNull @RequestParam("password") String password,
-                                  @RequestParam("number") Integer number,
+                                  @RequestParam("number") String number,
                                   @RequestParam("phone") String phone,
                                   @RequestParam("school") String school,
                                   @RequestParam("email") String email) {

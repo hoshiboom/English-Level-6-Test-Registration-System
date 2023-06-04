@@ -52,7 +52,7 @@ public class AdminController {
     @RequestMapping(value = "/admin",method = RequestMethod.POST)
     public Response addAdmin(@NonNull @RequestParam("name") String name,
                              @NonNull @RequestParam("password") String password,
-                             @RequestParam("number") Integer number,
+                             @RequestParam("number") String number,
                              @RequestParam("email") String email){
         Admin admin = new Admin().setName(name).setPassword(password).setEmail(email).setNumber(number);
 
@@ -63,7 +63,7 @@ public class AdminController {
     public Response updateAdmin(@PathVariable("id") Integer id,
                              @NonNull @RequestParam("name") String name,
                              @NonNull @RequestParam("password") String password,
-                             @RequestParam("number") Integer number,
+                             @RequestParam("number") String number,
                              @RequestParam("email") String email){
 
         Admin admin = new Admin().setId(id).setName(name).setPassword(password).setEmail(email).setNumber(number);

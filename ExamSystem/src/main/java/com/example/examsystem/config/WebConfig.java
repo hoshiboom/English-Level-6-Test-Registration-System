@@ -12,8 +12,8 @@ import javax.annotation.Resource;
 public class WebConfig implements WebMvcConfigurer {
     @Resource
     private LoginCheckInterceptor loginCheckInterceptor;
-    /*@Override
+    @Override
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(loginCheckInterceptor).addPathPatterns("/**");
-    }*/
+    }
 }

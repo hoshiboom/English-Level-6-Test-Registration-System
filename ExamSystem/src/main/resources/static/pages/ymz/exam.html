@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>六级考试在线考生答题</title>
+  <meta charset="UTF-8">
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 5px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+      text-align: center;
+    }
+
+    .question {
+      margin-bottom: 20px;
+    }
+
+    .question-title {
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    .options label {
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    .btn-next {
+      display: block;
+      width: 100px;
+      margin: 0 auto;
+      padding: 10px;
+      font-size: 16px;
+      font-weight: bold;
+      text-align: center;
+      color: #fff;
+      background-color: #007bff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .btn-next:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <h1>六级考试在线考生答题</h1>
+  <div id="listening-questions" class="question">
+    <h2>听力部分</h2>
+    <div class="question-title">1. What is the main topic of the conversation?</div>
+    <div class="options">
+      <label><input type="radio" name="listening-q1" value="A"> A. Traveling to a new city</label>
+      <label><input type="radio" name="listening-q1" value="B"> B. Trying new foods</label>
+      <label><input type="radio" name="listening-q1" value="C"> C. Shopping for clothes</label>
+    </div>
+    <!-- Add more listening questions here -->
+    <h2>阅读A部分</h2>
+    <div class="reading-text">
+      Global warming, the phenomenon of increasing average air temperatures near the surface of Earth over the past one to two centuries. Climate scientists have since the mid-20th century gathered detailed observations of various weather phenomena (such as temperatures, precipitation, and storms) and of related influences on climate (such as ocean currents and the atmosphere’s chemical composition). These data indicate that Earth’s climate has changed over almost every conceivable timescale since the beginning of geologic time and that human activities since at least the beginning of the Industrial Revolution have a growing influence over the pace and extent of present-day climate change.
+    </div>
+    <br />
+    <div class="question-title">1. According to the passage， what is the main cause of global warming?</div>
+    <div class="options">
+      <label><input type="radio" name="reading-q1" value="A"> A. Deforestation</label>
+      <label><input type="radio" name="reading-q1" value="B"> B. Burning fossil fuels</label>
+      <label><input type="radio" name="reading-q1" value="C"> C. Natural climate changes</label>
+    </div>
+    <!-- Add more reading questions here -->
+    <h2>阅读B部分</h2>
+    <div class="reading-text">
+      The importance of exercise for maintaining good health cannot be overstated. Regular physical activity has numerous benefits, including reducing the risk of chronic diseases, improving mental health, and increasing overall well-being. It is recommended that adults engage in at least 150 minutes of moderate-intensity aerobic activity or 75 minutes of vigorous-intensity aerobic activity per week, along with muscle-strengthening activities at least two days a week.
+    </div>
+    <br />
+    <div class="question-title">1. What is the recommended amount of moderate-intensity aerobic activity for adults?</div>
+    <div class="options">
+      <label><input type="radio" name="reading-bc-q1" value="A"> A. 60 minutes per week</label>
+      <label><input type="radio" name="reading-bc-q1" value="B"> B. 150 minutes per week</label>
+      <label><input type="radio" name="reading-bc-q1" value="C"> C. 300 minutes per week</label>
+    </div>
+    <h2>阅读C部分</h2>
+    <div class="reading-text">
+      Technology has revolutionized the way we live and work. From smartphones to artificial intelligence, advancements in technology have brought about significant changes in various aspects of society. While technology offers numerous benefits, such as increased efficiency and convenience, it also presents challenges, such as privacy concerns and job displacement. It is important to strike a balance between embracing technological advancements and addressing their potential drawbacks.
+    </div>
+    <br />
+    <div class="question-title">1. What are some challenges associated with technology?</div>
+    <div class="options">
+      <label><input type="radio" name="reading-c-q1" value="A"> A. Increased efficiency and convenience</label>
+      <label><input type="radio" name="reading-c-q1" value="B"> B. Privacy concerns and job displacement</label>
+      <label><input type="radio" name="reading-c-q1" value="C"> C. Positive impact on society</label>
+    </div>
+  </div>
+
+
+  <div id="subjective-questions" class="question" style="display: none;">
+    <h2>主观题</h2>
+    <div class="question-title">翻译题</div>
+    <div class="translate-text">瓷器(porcelain)是一种由精选的瓷土(porcelain clay)或瓷石(pottery stone)、通过工艺流程制成的物件。尽管瓷器由陶器(pottery)发展而来，然而它们在原料、轴(glaze)、烧制温度方面都是不同的。比起陶器，瓷器质地更坚硬，器身更通透，光泽也更好。瓷器在英语里叫做china,因为第 一件瓷器就是在中国制造的。瓷器促进了中国和外部世界之间的经济文化交流，并深刻地影响着其他国家的传统文化和生活方式。
+    </div>
+    <br />
+    <textarea id="translation-answer" rows="4" cols="50" placeholder="请输入翻译答案"></textarea>
+    <div class="question-title">作文题</div>
+    <div class="translate-text">Nowadays more and more people keep learning new skills to adapt to a fast-changing world.you can make comments,use examples,or use your personal experiences to develop your essay.
+    </div>
+    <br />
+    <textarea id="essay-answer" rows="6" cols="50" placeholder="请输入作文答案"></textarea>
+  </div>
+  <button id="next-button" class="btn-next">下一页</button>
+  <button id="submit-button" class="btn-next" style="display: none;">确定提交</button>
+
+  <script>
+    var listeningQuestions = document.getElementById('listening-questions');
+    var readingQuestions = document.getElementById('reading-questions');
+    var readingBCQuestions = document.getElementById('reading-bc-questions');
+    var subjectiveQuestions = document.getElementById('subjective-questions');
+    var nextButton = document.getElementById('next-button');
+    var submitButton = document.getElementById('submit-button');
+
+    nextButton.addEventListener('click', function() {
+      if (listeningQuestions.style.display !== 'none') {
+        listeningQuestions.style.display = 'none';
+        subjectiveQuestions.style.display = 'block';
+        nextButton.style.display = 'none';
+        submitButton.style.display = 'block';
+      }
+
+    });
+    submitButton.addEventListener('click', function() {
+      // Clear the page content
+      document.body.innerHTML = '';
+
+      // Display submission message
+      //var message = document.createElement('p');
+      //message.textContent = '你已提交试卷，考试已结束！';
+      //document.body.appendChild(message);
+      var message = document.createElement('p');
+      message.textContent = '你已提交试卷，考试已结束！';
+      message.style.textAlign = 'center'; // Set text alignment tso center
+      message.style.fontSize = '24px'; // Set font size to 24 pixels
+      message.style.fontWeight = 'bold'; // Set font weight to bold
+      document.body.appendChild(message);
+    });
+  </script>
+
+</div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+

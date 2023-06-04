@@ -5,13 +5,10 @@ server:
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://127.0.0.1:3306/ExamSystem
+    url: jdbc:mysql://hoshiboom.space:3306/ExamSystem
     username: root
-    password: mysql
+    password: Mysql123!
     type: com.alibaba.druid.pool.DruidDataSource
 mybatis:
   configuration:
     log-impl:  org.apache.ibatis.logging.stdout.StdOutImpl
-logging:
-  charset:
-    console: UTF-8

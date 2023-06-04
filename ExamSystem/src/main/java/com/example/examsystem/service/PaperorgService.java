@@ -13,6 +13,4 @@ public interface PaperorgService extends IService<Paperorg> {
     Response updatePaperorg(Paperorg Paperorg);
 
     Response deletePaperorg(Integer id);
-
-    Response getPaperorgDetails(Integer id, Integer curpage, Integer size);
 }

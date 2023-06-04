@@ -18,7 +18,7 @@ public class Teacher implements Serializable {    //可序列化，方便保存�
     private Integer id;
     private String name;
     private String password;
-    private Integer number;//学号
+    private String number;//学号
     private String school;
     private String email;
     private String phone;
