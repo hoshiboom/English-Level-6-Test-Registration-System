@@ -8,10 +8,12 @@ import com.example.examsystem.entity.Signup;
 import com.example.examsystem.mapper.SignupMapper;
 import com.example.examsystem.service.SignupService;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import java.util.function.Function;
 
 @Slf4j
 @Validated
@@ -25,13 +27,18 @@ public class SignupController {
     @Resource
     private SignupMapper signupMapper;
 
+    @Resource
+    @Qualifier("globalVariable")
+    private Function<String, String> parameterValue;
+
 
     //分页获得列表
     @RequestMapping(value = "/signup", method = RequestMethod.GET)
     public Response SignupPage(@RequestParam(required = false) Integer curpage,
                                 @RequestParam(required = false) Integer size) {
         if (curpage == null || curpage <= 0) curpage = 1;
-        if (size == null || size <= 0 || size > 10) size = 10;
+        Integer pagesize = Integer.parseInt(parameterValue.apply("Page_Size"));
+        if (size == null || size <= 0 || size > pagesize) size = pagesize;
 
         Page<Signup> page = signupService.page(new Page<>(curpage, size),
                 new QueryWrapper<Signup>());

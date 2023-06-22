@@ -29,7 +29,7 @@ public class PaperinfoServiceImpl extends ServiceImpl<PaperinfoMapper, Paperinfo
     public Response insertPaperinfo(Paperinfo paperinfo){
 
         paperinfoMapper.insert(paperinfo);
-        return new Response(ResponseEnum.Add_Paperinfo_Success);
+        return new Response(ResponseEnum.Add_Paperinfo_Success,paperinfo);
     }
     @Override
     @Transactional(rollbackFor = Exception.class)

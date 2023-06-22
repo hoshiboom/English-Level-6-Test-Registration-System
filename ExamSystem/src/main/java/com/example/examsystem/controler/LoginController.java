@@ -5,19 +5,20 @@ import com.example.examsystem.dto.ResponseEnum;
 import com.example.examsystem.entity.Admin;
 import com.example.examsystem.entity.Student;
 import com.example.examsystem.entity.Teacher;
-import com.example.examsystem.mapper.AdminMapper;
 import com.example.examsystem.service.AdminService;
 import com.example.examsystem.service.StudentService;
 import com.example.examsystem.service.TeacherService;
 import com.example.examsystem.utils.JwtUtils;
 import lombok.NonNull;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.function.Function;
 
 @Slf4j
 @Validated
@@ -30,6 +31,10 @@ public class LoginController {
     private StudentService studentService;
     @Resource
     private TeacherService teacherService;
+
+    @Resource
+    @Qualifier("globalVariable")
+    private Function<String, String> parameterValue;
 
     @ResponseBody   //加不加无所谓，这个注解指定将控制器返回的方法序列化成json格式的相应内容，否则spring回将该对象视为一个模型对象并传递给试图
                     //但是由于类开头用了RestController注解来定义一个控制类，该类默认将所有处理方法的返回值都视为HTTP响应体中的数据而不是视图名称
@@ -44,7 +49,7 @@ public class LoginController {
             claims.put("id", a.getId());
             claims.put("roleId", 1);
             claims.put("name",a.getName());
-            return new Response(ResponseEnum.Login_Success,JwtUtils.generateToken(claims));
+            return new Response(ResponseEnum.Login_Success,JwtUtils.generateToken(claims), 1);
         }
         else{
             return new Response(ResponseEnum.Login_Failure);
@@ -61,7 +66,7 @@ public class LoginController {
             claims.put("id", a.getId());
             claims.put("roleId", 2);
             claims.put("name",a.getName());
-            return new Response(ResponseEnum.Login_Success,JwtUtils.generateToken(claims));
+            return new Response(ResponseEnum.Login_Success,JwtUtils.generateToken(claims), 1);
         }
         else{
             return new Response(ResponseEnum.Login_Failure);
@@ -78,7 +83,7 @@ public class LoginController {
             claims.put("id", a.getId());
             claims.put("roleId", 3);
             claims.put("name",a.getName());
-            return new Response(ResponseEnum.Login_Success,JwtUtils.generateToken(claims));
+            return new Response(ResponseEnum.Login_Success,JwtUtils.generateToken(claims), 1);
         }
         else{
             return new Response(ResponseEnum.Login_Failure);

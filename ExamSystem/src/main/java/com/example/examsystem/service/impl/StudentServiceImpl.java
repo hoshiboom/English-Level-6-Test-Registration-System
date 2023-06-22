@@ -33,12 +33,13 @@ public class StudentServiceImpl extends ServiceImpl<StudentMapper, Student> impl
     public Response insertStudent(Student student){
         if(student.getNumber()!=null) {
             Student Student1 = this.getOne(new QueryWrapper<Student>().eq("number", student.getNumber()));
-            if (Student1!= null) {
+            Student Student2 = this.getOne(new QueryWrapper<Student>().eq("id_number", student.getIdNumber()));
+            if (Student1!= null || Student2!=null) {
                 return new Response(ResponseEnum.Add_Student_Failure);
             }
         }
         studentMapper.insert(student);
-        return new Response(ResponseEnum.Add_Student_Success);
+        return new Response(ResponseEnum.Add_Student_Success,student);
     }
     @Override
     @Transactional(rollbackFor = Exception.class)
@@ -63,5 +64,15 @@ public class StudentServiceImpl extends ServiceImpl<StudentMapper, Student> impl
             throw new DaoException(ResponseEnum.Delete_Student_Failure);
         }
         return new Response(ResponseEnum.Delete_Student_Success);
+    }
+
+    @Override
+    public Response getStudent(Integer idNumber) {
+        Student Studenttest = this.getOne(
+                new QueryWrapper<Student>().eq("id_number",idNumber)
+        );
+        if (Studenttest == null) return new Response(ResponseEnum.Get_Student_Failure);
+
+        return new Response(ResponseEnum.Get_Student_Success,Studenttest);
     }
 }

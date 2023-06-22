@@ -29,7 +29,7 @@ public class QuestionServiceImpl extends ServiceImpl<QuestionMapper, Question> i
     public Response insertQuestion(Question question){
 
         questionMapper.insert(question);
-        return new Response(ResponseEnum.Add_Question_Success);
+        return new Response(ResponseEnum.Add_Question_Success,question);
     }
     @Override
     @Transactional(rollbackFor = Exception.class)

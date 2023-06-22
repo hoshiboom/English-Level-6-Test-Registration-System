@@ -10,10 +10,12 @@ import com.example.examsystem.mapper.AdminMapper;
 import com.example.examsystem.service.AdminService;
 import lombok.NonNull;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import java.util.function.Function;
 
 @Slf4j
 @Validated
@@ -27,12 +29,17 @@ public class AdminController {
     @Resource
     private AdminMapper adminMapper;
 
+    @Resource
+    @Qualifier("globalVariable")
+    private Function<String, String> parameterValue;
+
 
     @RequestMapping(value = "/admin",method = RequestMethod.GET)
     public Response adminPage(@RequestParam(required = false) Integer curpage,
                           @RequestParam(required = false) Integer size) {
         if (curpage == null || curpage <= 0) curpage = 1;
-        if (size == null || size <= 0 || size > 10) size = 10;
+        Integer pagesize = Integer.parseInt(parameterValue.apply("Page_Size"));
+        if (size == null || size <= 0 || size > pagesize) size = pagesize;
 
         Page<Admin> page=adminService.page(new Page<>(curpage,size),new QueryWrapper<Admin>().select("id","name","password","number","email"));
         return new Response(ResponseEnum.List_Admin_Success,page);

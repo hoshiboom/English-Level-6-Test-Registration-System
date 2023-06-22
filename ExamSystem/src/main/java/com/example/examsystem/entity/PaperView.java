@@ -9,18 +9,25 @@ import lombok.experimental.Accessors;
 
 import java.io.Serializable;
 
-//MyBatis ORM(Object-Relational Mapping)
 @Data   //set、get
 @NoArgsConstructor  //无参构造函数
 @AllArgsConstructor //全参构造函数
 @Accessors(chain =true)
-public class Paperorg implements Serializable {    //可序列化，方便保存对象
-    @TableId(value = "id",type= IdType.AUTO)
+public class PaperView {
     private Integer id;
+    private String questionName;
+    private String questionDescription;
+    private String optionA;
+    private String optionB;
+    private String optionC;
+    private String optionD;
+    private String answer;
+    private Integer typeId;
+    private Integer score;
     private Integer questionId;
     private Integer paperinfoId;
     private Integer orderId;
 
-    private static final long serialVersionUID = 1L;    //序列化和反序列化时校验防止出错，1L表示这是这个类的第一个版本
 
 }
+

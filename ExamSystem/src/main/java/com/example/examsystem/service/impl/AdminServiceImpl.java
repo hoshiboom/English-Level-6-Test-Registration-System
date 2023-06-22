@@ -41,7 +41,7 @@ public class AdminServiceImpl extends ServiceImpl<AdminMapper, Admin> implements
             }
         }
         adminMapper.insert(admin);
-        return new Response(ResponseEnum.Add_Admin_Success);
+        return new Response(ResponseEnum.Add_Admin_Success,admin);
     }
     @Override
     @Transactional(rollbackFor = Exception.class)

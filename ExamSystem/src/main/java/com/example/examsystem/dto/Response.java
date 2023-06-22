@@ -32,7 +32,7 @@ public class Response {
         this.date = new Date();
         this.token = null;
     }
-    public Response(ResponseEnum responseEnum, String jwt) {
+    public Response(ResponseEnum responseEnum, String jwt, Integer flag) {
         this.msg = responseEnum.getMsg();
         this.code = responseEnum.getCode();
         this.data = null ;

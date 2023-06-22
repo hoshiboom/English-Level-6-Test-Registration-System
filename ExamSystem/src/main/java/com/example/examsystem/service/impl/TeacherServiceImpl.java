@@ -22,6 +22,7 @@ public class TeacherServiceImpl extends ServiceImpl<TeacherMapper, Teacher> impl
 
     @Resource
     private TeacherMapper teacherMapper;
+
     @Override
     public Teacher login(Integer number, String password) {
         //调用mapper dao层功能
@@ -38,7 +39,7 @@ public class TeacherServiceImpl extends ServiceImpl<TeacherMapper, Teacher> impl
             }
         }
         teacherMapper.insert(teacher);
-        return new Response(ResponseEnum.Add_Teacher_Success);
+        return new Response(ResponseEnum.Add_Teacher_Success,teacher);
     }
     @Override
     @Transactional(rollbackFor = Exception.class)

@@ -13,4 +13,6 @@ public interface StudentService extends IService<Student> {
     Response updateStudent(Student Student);
 
     Response deleteStudent(Integer id);
+
+    Response getStudent(Integer idNumber);
 }

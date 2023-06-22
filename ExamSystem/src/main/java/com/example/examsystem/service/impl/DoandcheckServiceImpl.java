@@ -29,7 +29,7 @@ public class DoandcheckServiceImpl extends ServiceImpl<DoandcheckMapper, Doandch
     public Response insertDoandcheck(Doandcheck doandcheck){
 
         doandcheckMapper.insert(doandcheck);
-        return new Response(ResponseEnum.Add_Doandcheck_Success);
+        return new Response(ResponseEnum.Add_Doandcheck_Success,doandcheck);
     }
     @Override
     @Transactional(rollbackFor = Exception.class)

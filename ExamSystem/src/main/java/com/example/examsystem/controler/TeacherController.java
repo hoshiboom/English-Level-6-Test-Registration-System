@@ -9,10 +9,12 @@ import com.example.examsystem.mapper.TeacherMapper;
 import com.example.examsystem.service.TeacherService;
 import lombok.NonNull;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import java.util.function.Function;
 
 @Slf4j
 @Validated
@@ -26,13 +28,18 @@ public class TeacherController {
     @Resource
     private TeacherMapper teacherMapper;
 
+    @Resource
+    @Qualifier("globalVariable")
+    private Function<String, String> parameterValue;
+
 
     //分页获得列表
     @RequestMapping(value = "/teacher", method = RequestMethod.GET)
     public Response TeacherPage(@RequestParam(required = false) Integer curpage,
                                 @RequestParam(required = false) Integer size) {
         if (curpage == null || curpage <= 0) curpage = 1;
-        if (size == null || size <= 0 || size > 10) size = 10;
+        Integer pagesize = Integer.parseInt(parameterValue.apply("Page_Size"));
+        if (size == null || size <= 0 || size > pagesize) size = pagesize;
 
         Page<Teacher> page = teacherService.page(new Page<>(curpage, size),
                 new QueryWrapper<Teacher>().select("id", "name", "password", "number","school", "email","phone"));

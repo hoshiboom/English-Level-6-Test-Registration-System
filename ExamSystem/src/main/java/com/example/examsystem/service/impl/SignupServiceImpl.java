@@ -29,7 +29,7 @@ public class SignupServiceImpl extends ServiceImpl<SignupMapper, Signup> impleme
     public Response insertSignup(Signup signup){
 
         signupMapper.insert(signup);
-        return new Response(ResponseEnum.Add_Signup_Success);
+        return new Response(ResponseEnum.Add_Signup_Success,signup);
     }
     @Override
     @Transactional(rollbackFor = Exception.class)

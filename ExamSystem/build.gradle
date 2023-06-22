@@ -37,7 +37,7 @@ dependencies {
 // implementation 'org.springframework.session:spring-session-data-redis' // 分布式session实现
 // implementation 'org.springframework.security:spring-security-web:5.6.1' // 安全
 // implementation 'org.springframework.security:spring-security-config:5.6.1' // 安全
-
+    implementation('org.springframework.boot:spring-boot-starter-data-jpa') //JPA
     implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:3.0.0' // mybatis
     implementation "com.baomidou:mybatis-plus-boot-starter:$mybatisPlusVersion" // mybatis-plus
     implementation 'com.alibaba:druid:1.2.15' // druid数据源
