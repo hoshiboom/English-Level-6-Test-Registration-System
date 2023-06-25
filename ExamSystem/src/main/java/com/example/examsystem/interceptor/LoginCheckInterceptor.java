@@ -33,9 +33,14 @@ public class LoginCheckInterceptor implements HandlerInterceptor {
         if(uri.contains("/pages/")||uri.contains("error")||uri.contains("favicon.ico")) {
             return true;
         }
+        boolean signup=(request.getMethod().equals("POST")&&(uri.contains("student")||uri.contains("admin")||uri.contains("teacher")));
 
         // 2.登录请求直接过
-        if (uri.contains("/login")) {
+        if (uri.contains("/login")||signup) {
+            return true;
+        }
+
+        if(request.getMethod().equals("OPTIONS")) {
             return true;
         }
         // 3.注册请求直接过

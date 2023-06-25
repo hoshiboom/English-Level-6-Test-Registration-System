@@ -6,7 +6,10 @@
     <title>考试结果页面</title>
     <link rel="stylesheet" href="css/ResultShow.css">
 </head>
-<body>
+<script src="ResultShow.js">
+</script>
+<!--设置页面打开时自动调用展示函数-->
+<body onload="GetResults()">
 <div id="Header">
     <div class="header-top">
         <div class="logodiv">
@@ -31,6 +34,7 @@
         <a href="//www.neea.edu.cn"><img src="	https://cjcx.neea.edu.cn/res/Home/structure/160330143.png" style="vertical-align:middle;"> 首页</a>
     </div>
 </div>
+
 <div id="Content">
     <div class="condition">
         <div class="condition-left">
@@ -43,7 +47,7 @@
                     <table border="1px" align="center" cellspacing="0" bgcolor="#dcdcdc" width="800px">
                         <tr><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th><th>9</th><th>10</th>
                         </tr>
-<!--                        这里到时候从表中搞接口-->
+                        <!--                        这里到时候从表中搞接口-->
                         <tr bgcolor="#fff8dc"><td>A</td><td>B</td><td>A</td><td>B</td><td>A</td><td>B</td><td>A</td><td>B</td><td>A</td><td>B</td>
                         </tr>
                         <tr><th>11</th><th>12</th><th>13</th><th>14</th><th>15</th><th>16</th><th>17</th><th>18</th><th>19</th><th>20</th>
