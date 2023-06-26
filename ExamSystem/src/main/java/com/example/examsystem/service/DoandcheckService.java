@@ -13,4 +13,6 @@ public interface DoandcheckService extends IService<Doandcheck> {
     Response updateDoandcheck(Doandcheck Doandcheck);
 
     Response deleteDoandcheck(Integer id);
+
+    Response AutogradingAll();
 }

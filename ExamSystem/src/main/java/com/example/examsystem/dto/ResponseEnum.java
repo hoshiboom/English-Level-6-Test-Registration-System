@@ -125,6 +125,12 @@ public class ResponseEnum {
     public static final ResponseEnum Update_Doandcheck_Failure = new ResponseEnum(2008040,"更新作答失败");
     public static final ResponseEnum Add_Doandcheck_Success = new ResponseEnum(2008041,"新增作答成功");
     public static final ResponseEnum Add_Doandcheck_Failure = new ResponseEnum(2008040,"新增作答失败");
+    public static final ResponseEnum AutoGrading_Doandcheck_Success = new ResponseEnum(2008051,"自动阅卷成功");
+    public static final ResponseEnum AutoGrading_Doandcheck_Failure = new ResponseEnum(2008050,"自动阅卷失败");
+
+    // ============================================= ScoreController =====================================//
+    public static final ResponseEnum Get_Score_Success = new ResponseEnum(2009011,"获得学生总成绩成功");
+    public static final ResponseEnum Get_Score_Failure = new ResponseEnum(2009010,"此学生无此试卷成绩");
 
 
     // ============================================= 通用 ============================================= //

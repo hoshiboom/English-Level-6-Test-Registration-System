@@ -55,4 +55,13 @@ public class DoandcheckServiceImpl extends ServiceImpl<DoandcheckMapper, Doandch
         }
         return new Response(ResponseEnum.Delete_Doandcheck_Success);
     }
+
+    @Override
+    public Response AutogradingAll() {
+
+
+
+        return new Response(ResponseEnum.AutoGrading_Doandcheck_Success);
+
+    }
 }

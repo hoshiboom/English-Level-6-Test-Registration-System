@@ -54,7 +54,7 @@ public class DoandcheckController {
 
     }
 
-    @RequestMapping(value = "/doandcheckByCondition", method = RequestMethod.GET)
+    @RequestMapping(value = "/doandcheckByCondition", method = RequestMethod.POST)
     public Response DoandcheckPage(@RequestBody(required = false)Doandcheck doandcheckCondition) {
 
         QueryWrapper<Doandcheck> queryWrapper = new QueryWrapper<Doandcheck>();
@@ -141,5 +141,15 @@ public class DoandcheckController {
     @RequestMapping(value = "/doandcheck/{id}", method = RequestMethod.DELETE)
     public Response deleteDoandcheck(@PathVariable("id") Integer id) {
         return doandcheckService.deleteDoandcheck(id);
+    }
+
+    @RequestMapping(value = "/autograding", method = RequestMethod.GET)
+    public Response getAutograding(@RequestParam(value = "studentId",required = false) Integer studentId,
+                                   @RequestParam(value = "paperinfoId",required = false)Integer paperinfoId,
+                                   @RequestParam(value = "questionId",required = false) Integer questionId){
+        if(studentId==null){//将doandcheck表中的所有state为0或1的记录更新
+            return doandcheckService.AutogradingAll();
+        }
+        return new Response(ResponseEnum.AutoGrading_Doandcheck_Failure);
     }
 }
