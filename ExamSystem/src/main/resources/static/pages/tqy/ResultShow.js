@@ -1,6 +1,7 @@
 // 请求前缀url
 const baseUrl = "http:\/\/hoshiboom.space";
-
+var ListenScore = 0;
+var totalscore=0;
 /*
 * 传参：object
 * obj.path: 请求路径
@@ -73,30 +74,83 @@ function requests(obj) {
 function GetResults()//展示所有的题目
 {
     //alert("begin");
-    const admin_token = "eyJhbGciOiJIUzI1NiJ9.eyJyb2xlSWQiOjEsIm5hbWUiOiJoaSIsImlkIjoyLCJleHAiOjE2ODc3MjQ1OTJ9.c0QFQpiOhnZxqYJwVF3Kz2jF0XAEcN2GZfXL86Po3P8";
     const params = new URLSearchParams(window.location.search);
-    let responseId=params.get('responseId');
+    let responseId=params.get('responseId');//QueryResult.html传来的学生id
+    let responsePassword=params.get('responsePassword');
     if(responseId==null)
     {
         alert("wrong");
     }
-    //根据student表的id在doandcheck表中获取question_id和paperinfo_id
-    let obj1=
+    let obj0=
         {
-            path:"/doandcheck/{id}",
-            method:"GET",
+            path:"/login/admin",
+            method:"POST",
+            token : null ,
             mode : "cors",
-            token:admin_token,//用管理员账户查询学生身份证号
             data:{
-                idNumber : responseId
+                'number' : 2012618,
+                password : 123456
             }
         }
-    let ResponseData1;
-    requests(obj1).then(function(data)
+    var cur_token;
+    requests(obj0).then(function(data)
     {
-        ResponseData1=data;
         console.log(data);
-        console.log(data.date);
-
+        if(data.code == 2001041)//登录成功，获取当前token
+        {
+            console.log("登录成功");
+            cur_token=data.token;
+            // var obj1path="/doandcheck/"+responseId.toString();
+            // let obj1=
+            //     {
+            //         path:obj1path,
+            //         method:"GET",
+            //         token:cur_token,//用管理员账户获取question_id和paperinfo_id
+            //         data:{
+            //             studentId : responseId,
+            //             state:3
+            //         }
+            //     }
+            // let ResponseData1;
+            // requests(obj1).then(function(data)
+            // {
+            //     ResponseData1=data;
+            //     console.log(data);
+            //     ListenScore=data.data.actualScore;
+            //     const resultDiv = document.getElementById("result");
+            //     resultDiv.textContent = ListenScore; // 将数字展示在页面中
+            // });
+            //获取总成绩
+            let objTotalScore={
+                path:"/score",
+                method:"GET",
+                mode : "cors",
+                token:cur_token,
+                data:{
+                    studentId:responseId,
+                    paperinfoId:2
+                }
+            }
+            requests(objTotalScore).then(function(data)
+            {
+                console.log(data);
+                if(data.code==2009011)//查询总分成功
+                {
+                    totalscore=data.data.score;
+                    const totalDiv=document.getElementById("totalscore");
+                    totalDiv.textContent=totalscore;
+                }
+                else
+                {
+                    alert("此学生无此试卷成绩");
+                }
+            })
+        }
+        else
+        {
+            alert("查询权限错误");
+        }
     });
+    //根据student表的id在doandcheck表中获取question_id和paperinfo_id
+
 }

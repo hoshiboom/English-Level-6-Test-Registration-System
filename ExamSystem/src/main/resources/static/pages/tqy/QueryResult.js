@@ -9,8 +9,6 @@ const baseUrl = "http:\/\/hoshiboom.space";
 * obj.token: 根据用户实际token设置
 * */
 function requests(obj) {
-    console.log("进入request")
-    console.log(obj)
     let method;
     if(obj.method){
         obj.method = obj.method.toUpperCase();
@@ -74,7 +72,6 @@ function requests(obj) {
 }
 
 function querySubmit() {
-    const admin_token = "eyJhbGciOiJIUzI1NiJ9.eyJyb2xlSWQiOjEsIm5hbWUiOiJoaSIsImlkIjoyLCJleHAiOjE2ODc3NDI3MDd9.LGXgQuj6lQMetHslDLasPoPTJLiUu0rJhLus_fSRvjI";
     var tempname = document.getElementById("xm");
     var name = tempname.value;
     var tempid = document.getElementById("sfz");
@@ -86,59 +83,50 @@ function querySubmit() {
             token : null ,
             mode : "cors",
             data:{
-                number : 2012618,
+                'number' : 2012618,
                 password : 123456
             }
         }
     var cur_token;
-    var whetherget=false;
-    console.log(obj0.data.number);
-    console.log(obj0.data.password);
     requests(obj0).then(function(data)
     {
         console.log(data);
         if(data.code == 2001041)//登录成功，获取当前token
         {
             cur_token=data.token;
-            alert(cur_token);
-            whetherget=true;
+            let obj1=
+                {
+                    path:"/studentByIDNumber",
+                    method:"GET",
+                    mode : "cors",
+                    token:cur_token,//用管理员账户查询学生身份证号
+                    data:{
+                        idNumber : sfzid
+                    }
+                }
+            let responseData;
+            requests(obj1).then(function(data)
+            {
+                responseData=data;
+                console.log(data);
+                if(data.code != 2003021)
+                {
+                    alert("查询失败，请重新确认输入");
+                }
+                else//查询成功
+                {
+                    const params = new URLSearchParams();
+                    params.append('responseId', responseData.data.id);
+                    const url = './ResultShow.html?' + params.toString();
+                    window.open(url,'_self');
+                }
+            });
         }
         else
         {
             alert("查询权限错误");
         }
     });
-    if(whetherget)//更新token后进行下一步操作
-    {
-        let obj1=
-            {
-                path:"/studentByIDNumber",
-                method:"GET",
-                mode : "cors",
-                token:admin_token,//用管理员账户查询学生身份证号
-                data:{
-                    idNumber : sfzid
-                }
-            }
-        let responseData;
-        requests(obj1).then(function(data)
-        {
-            responseData=data;
-            console.log(data);
-            console.log(data.date);
-            if(data.code != 2003021)
-            {
-                alert("查询失败，请重新确认输入");
-            }
-            else//查询成功
-            {
-                const params = new URLSearchParams();
-                params.append('responseId', responseData.data.id);
-                const url = './ResultShow.html?' + params.toString();
-                window.open(url,'_self');
-            }
-        });
-    }
 
 
 }

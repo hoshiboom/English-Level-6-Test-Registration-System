@@ -109,11 +109,12 @@ function ChooseInsert() {
             score:ValueTestScore
         }
     }
-
+    var idreturned;
     requests(obj1).then(function(data)
     {
         console.log(data);
         console.log(data.date);
+        idreturned=data.id;
     });
     console.log("request submit");
 }
