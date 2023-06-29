@@ -1,6 +1,6 @@
 // 请求前缀url
 const baseUrl = "http:\/\/hoshiboom.space";
-
+var cur_token;
 /*
 * 传参：object
 * obj.path: 请求路径
@@ -71,11 +71,9 @@ function requests(obj) {
     })
 }
 
-function querySubmit() {
-    var tempname = document.getElementById("xm");
-    var name = tempname.value;
-    var tempid = document.getElementById("sfz");
-    var sfzid = tempid.value;
+//获取管理员权限先
+function DefaultCall()
+{
     let obj0=
         {
             path:"/login/admin",
@@ -87,46 +85,78 @@ function querySubmit() {
                 password : 123456
             }
         }
-    var cur_token;
     requests(obj0).then(function(data)
     {
         console.log(data);
         if(data.code == 2001041)//登录成功，获取当前token
         {
             cur_token=data.token;
-            let obj1=
-                {
-                    path:"/studentByIDNumber",
-                    method:"GET",
-                    mode : "cors",
-                    token:cur_token,//用管理员账户查询学生身份证号
-                    data:{
-                        idNumber : sfzid
-                    }
-                }
-            let responseData;
-            requests(obj1).then(function(data)
-            {
-                responseData=data;
-                console.log(data);
-                if(data.code != 2003021)
-                {
-                    alert("查询失败，请重新确认输入");
-                }
-                else//查询成功
-                {
-                    const params = new URLSearchParams();
-                    params.append('responseId', responseData.data.id);
-                    const url = './ResultShow.html?' + params.toString();
-                    window.open(url,'_self');
-                }
-            });
         }
         else
         {
-            alert("查询权限错误");
+            console.log("管理员权限获取错误");
+            alert("网页加载错误");
         }
     });
+}
+
+function querySubmit() {
+    var tempname = document.getElementById("xm");
+    var name = tempname.value;
+    var tempid = document.getElementById("sfz");
+    var sfzid = tempid.value;
+    if(name==''||sfzid=='')
+    {
+        if(name=='')
+        {
+            alert("请输入名称");
+            return;
+        }
+        alert("请输入身份证号");
+        return;
+    }
+    //判断一下身份证输入规格正确性
+    var regex = /^\d+[X\d]?$/;
+    if (!regex.test(sfzid))
+    {
+        alert("身份证号码必须为任意多个数字组成且最后一位可能为X或数字的字符串！");
+        tempname.value='';
+        tempid.value='';
+        return;
+    }
+    let obj1=
+        {
+            path:"/studentByIDNumber",
+            method:"GET",
+            mode : "cors",
+            token:cur_token,//用管理员账户查询学生身份证号
+            data:{
+                idNumber : sfzid
+            }
+        }
+    let responseData;
+    requests(obj1).then(function(data)
+    {
+        responseData=data;
+        console.log(data);
+        if(data.code != 2003021)
+        {
+            alert("查询失败，请重新确认输入");
+            tempname.value='';
+            tempid.value='';
+        }
+        else//查询成功
+        {
+            console.log("查询成功");
+            const params = new URLSearchParams();
+            params.append('responseId', responseData.data.id);
+            const url = './ResultShow.html?' + params.toString();
+            window.open(url,'_self');
+        }
+    });
+
+
+
 
 
 }

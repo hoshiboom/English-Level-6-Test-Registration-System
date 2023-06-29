@@ -2,6 +2,9 @@
 const baseUrl = "http:\/\/hoshiboom.space";
 var ListenScore = 0;
 var totalscore=0;
+var HighestTotalScoreIndex=0;//记录最高分卷子index
+var TotalScoresArray=[];
+var TotalScoreNum=0;//记录考过多少张卷子
 /*
 * 传参：object
 * obj.path: 请求路径
@@ -79,7 +82,7 @@ function GetResults()//展示所有的题目
     let responsePassword=params.get('responsePassword');
     if(responseId==null)
     {
-        alert("wrong");
+        alert("未查询到该学生成绩");
     }
     let obj0=
         {
@@ -122,13 +125,12 @@ function GetResults()//展示所有的题目
             // });
             //获取总成绩
             let objTotalScore={
-                path:"/score",
+                path:"/allscore",
                 method:"GET",
                 mode : "cors",
                 token:cur_token,
                 data:{
                     studentId:responseId,
-                    paperinfoId:2
                 }
             }
             requests(objTotalScore).then(function(data)
@@ -136,9 +138,22 @@ function GetResults()//展示所有的题目
                 console.log(data);
                 if(data.code==2009011)//查询总分成功
                 {
-                    totalscore=data.data.score;
+                    TotalScoreNum=data.data.length;
+                    for(var i=0;i<TotalScoreNum;i++)
+                    {
+                        TotalScoresArray.push(data.data[i]);
+                        if(totalscore<=data.data[i].score)
+                        {
+                            HighestTotalScoreIndex=i;
+                            totalscore=data.data[i].score;
+                        }
+                    }
+                    var RecordsToShow=totalscore+"(卷"+TotalScoresArray[HighestTotalScoreIndex].paperinfoId+")";
                     const totalDiv=document.getElementById("totalscore");
-                    totalDiv.textContent=totalscore;
+                    totalDiv.textContent=RecordsToShow;
+                    // totalDiv.style.cssText = "font-size : 4 !important;";
+                    totalDiv.style.fontSize = "2em";
+                    totalDiv.style.color = "#FF4500";
                 }
                 else
                 {

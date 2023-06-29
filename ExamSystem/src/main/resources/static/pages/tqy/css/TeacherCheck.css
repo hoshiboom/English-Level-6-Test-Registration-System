@@ -204,6 +204,20 @@ td {
     border: solid 1px #A9A9A9;
     padding: 0 5px;
 }
+.option textarea {
+    height: 252px;
+    line-height: 27px;
+    width: 550px;
+    border-radius: 5px;
+    border: solid 1px #A9A9A9;
+    padding: 0 5px;
+    word-break: normal;
+    /*禁止拖动*/
+    resize: none;
+}
+
+
+
 .alignleft {
     text-align: left !important;
 }
@@ -437,4 +451,13 @@ ul {
     margin-inline-start: 0px;
     margin-inline-end: 0px;
     padding-inline-start: 40px;
+}
+
+.no-spinners::-webkit-outer-spin-button,
+.no-spinners::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+.no-spinners {
+    -moz-appearance: textfield;
 }

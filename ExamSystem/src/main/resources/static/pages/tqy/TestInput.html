@@ -6,7 +6,7 @@
     <title>试题录入页面</title>
     <link rel="stylesheet" href="css/TestInput.css">
 </head>
-<body>
+<body onload="DefaultCall()">
 <!-- 从上到下，从外到内，从左到右-->
 <!--应该和Question实体交互-->
 <!--header-->
@@ -50,12 +50,10 @@
                 <tr>
                     <td align="right" nowrap="">题目类型：</td>
                     <td id="testtype" align="left" style="position:relative">
-                        <select id="types" name="types" alt="题目类型" >
-<!--                            onchange="$(this).css({color:'#000'});serv.checkCondion(this)"-->
+                        <select id="types" name="types" alt="题目类型" onchange="InputCheck()">
                             <option hidden disabled selected value style="display: none";>请选择题目类型</option>
                             <option value="ChoiceTest">选择题</option>
                             <option value="FillingTest">填空题</option>
-                            <option value="WritingTest">作文题</option>
                             <option value="TranslationTest">翻译题</option>
                             <option value="ArticleTest">文章题</option>
                         </select>
@@ -70,7 +68,7 @@
                     <td align="right">题目名称：</td>
                     <td class="s1" align="left" style="position:relative">
 <!--                        onblur="serv.checkCondion(this);"-->
-                        <input type="text" id="testname" name="testname" value="" alt="题目名称" maxlength="18"  autocomplete="off">
+                        <input type="text" id="testname" name="testname" value="" alt="题目名称" maxlength="18"  autocomplete="off" required="required">
                         <div class="tip1 t_1" id="testname_err"></div>
                         <span id="_xm"></span>
                     </td>
@@ -87,7 +85,7 @@
                     </td>
                     <td class="s2" align="left" style="position:relative">
 <!--                        <input type="text" style="word-break:break-all" id="testdescription" name="testdescription" value="" alt="题目描述" size="18"  onblur="serv.checkCondion(this,true);" autocomplete="off">-->
-                        <textarea name="testdescription" id="testdescription" required="required"></textarea>
+                        <textarea name="testdescription" id="testdescription" ></textarea>
                         <div class="tip1 t_1" id="testdescription_err"></div>
                     </td>
                 </tr>
@@ -177,7 +175,7 @@
                         题目分值：
                     </td>
                     <td class="s1" align="left" style="position:relative">
-                        <textarea id="testscore" name="testscore"></textarea>
+                        <input type="number" id="testscore" name="testscore" class="no-spinners"></textarea>
 <!--                        <input type="text" id="testscore" name="testscore" value="" alt="题目分值" size="18" maxlength="18" onblur="serv.checkCondion(this,true);" autocomplete="off">-->
                     </td>
                 </tr>

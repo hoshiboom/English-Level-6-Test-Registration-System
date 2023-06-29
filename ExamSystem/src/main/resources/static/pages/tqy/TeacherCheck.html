@@ -6,7 +6,8 @@
     <title>教师阅卷页面</title>
     <link rel="stylesheet" href="css/TeacherCheck.css">
 </head>
-<body>
+<!--设置页面打开时自动调用展示函数-->
+<body onload="DefaultCall()">
 <div id="Header">
     <div class="header-top">
         <div class="logodiv">
@@ -38,39 +39,59 @@
         <div class="condition-left">
             <div class="c_tits" style="margin-bottom: 70px;">全国大学英语六级考试<div style="padding-top: 10px">教师阅卷页面</div></div>
             <div class="container">
-                <table width="90%" border="0" cellspacing="0" align="center" class="zlykuang">
-                    <tbody>
-                    <h1><span id="TranslationTitle">翻译题</span></h1>
-                    <p style="margin-left:0cm; margin-right:0cm; text-align:left">　　
-                        此处应当为从后端获取的学生翻译题答案，暂略
-                    </p>
-                    <div class="s1" >
-                        <p style="text-align: right">
-                            <font size="5">得分为：</font>
-                            <input type="number" id="TranslationScore" name="TranslationScore">
-                        </p>
-                    </div>
-                    <hr><!--行分割-->
-                    <h1><span id="ArticleTitle">作文题</span> </h1>
-                    <p style="margin-left:0cm; margin-right:0cm; text-align:left">　　
-                        此处应当为从后端获取的学生作文题答案，暂略
-                    </p>
-                    <div class="s1" >
-                        <p style="text-align: right">
-                            <font size="5">得分为：</font>
-                            <input type="number" id="ArticleScore" name="ArticleScore">
-                        </p>
-                    </div>
+
+                <table width="90%" border="0" cellspacing="0" align="right" class="zlykuang">
+                    <tbody >
+                    <tr>
+                        <td colspan="2">
+                            <h1><span id="TranslationTitle" style=" position:relative">翻译题</span></h1>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="option" style="position: relative;" >
+                            <textarea readonly id="TranslationResult" name="TranslationResult" style=" position:relative"></textarea>
+                        </td>
+                        <td style="position: relative;">
+                            <div class="s1" style="position: relative;">
+                                <p style="text-align: right" >
+                                    <font size="5">得分为：</font>
+                                    <input type="number" id="TranslationScore" name="TranslationScore" class="no-spinners">
+                                </p>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <hr>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                        <h1><span id="ArticleTitle" style="position:relative">作文题</span> </h1>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="option" style="position: relative;" >
+                            <textarea readonly id="ArticleResult" name="ArticleResult" style=" position:relative"></textarea>
+                        </td>
+                        <td>
+                        <div class="s1" >
+                            <p style="text-align: right">
+                                <font size="5">得分为：</font>
+                                <input type="number" id="ArticleScore" name="ArticleScore" class="no-spinners">
+                            </p>
+                        </div>
+                        </td>
+                    </tr>
                     <tr >
                         <td>
                             <div class="btnbox_news alignright">
                                 <!--                                    此处需要修改js-->
-                                <input type="button" onclick="ChooseInsert()" value="确认" id="submitButton">&nbsp;
+                                <input type="button" onclick="ChooseInsert(this)" value="确认" id="submitButton">&nbsp;
                                 &ensp;
                                 <input type="button" value="返回" style="cursor:hand" onclick="javascript:window.open('../teacher.html','_self');">
                             </div>
                         </td>
-
                     </tr>
                     </tbody>
                 </table>
