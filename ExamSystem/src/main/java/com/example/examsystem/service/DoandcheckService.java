@@ -15,4 +15,6 @@ public interface DoandcheckService extends IService<Doandcheck> {
     Response deleteDoandcheck(Integer id);
 
     Response AutogradingAll();
+
+    Response getCheck(Integer type, Integer state);
 }

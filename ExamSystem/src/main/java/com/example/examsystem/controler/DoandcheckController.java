@@ -111,9 +111,9 @@ public class DoandcheckController {
     public Response addDoandcheck(@RequestParam("studentId") Integer studentId,
                                   @RequestParam("paperinfoId") Integer paperinfoId,
                                   @RequestParam("questionId") Integer questionId,
-                                  @RequestParam("studentAnswer") String studentAnswer,
-                                  @RequestParam("actualScore") Integer actualScore,
-                                  @RequestParam("state") Integer state
+                                  @RequestParam(value = "studentAnswer",required = false) String studentAnswer,
+                                  @RequestParam(value = "actualScore",required = false) Integer actualScore,
+                                  @RequestParam(value = "state",required = false) Integer state
     ) {
 
         Doandcheck doandcheck = new Doandcheck().setStudentId(studentId).setPaperinfoId(paperinfoId).setQuestionId(questionId)
@@ -151,5 +151,11 @@ public class DoandcheckController {
             return doandcheckService.AutogradingAll();
         }
         return new Response(ResponseEnum.AutoGrading_Doandcheck_Failure);
+    }
+
+    @RequestMapping(value ="check", method = RequestMethod.GET)
+    public Response getCheck(@RequestParam(value = "type",required=true) Integer type,
+                             @RequestParam(value = "state",required = true)Integer state){
+        return doandcheckService.getCheck(type, state);
     }
 }

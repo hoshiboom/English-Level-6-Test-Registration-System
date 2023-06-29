@@ -1,5 +1,6 @@
 package com.example.examsystem.service.impl;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.example.examsystem.dto.Response;
 import com.example.examsystem.dto.ResponseEnum;
@@ -11,6 +12,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 @Slf4j
 @Service    //bean
@@ -41,5 +43,14 @@ public class ScoreServiceImpl extends ServiceImpl<ScoreMapper,Score> implements 
         tmp.setState(1).setStudentId(studentId).setPaperinfoId(paperInfoId);
         this.save(tmp);
         return new Response(ResponseEnum.Get_Score_Success,tmp);
+    }
+
+    @Override
+    public Response getAllscore(Integer studentId) {
+        List<Score> listscore=scoreMapper.selectList(new QueryWrapper<Score>().eq("student_id", studentId));
+        if(listscore!=null) {
+            return new Response(ResponseEnum.Get_Score_Success,listscore);
+        }
+        return new Response(ResponseEnum.Get_Score_Failure);
     }
 }

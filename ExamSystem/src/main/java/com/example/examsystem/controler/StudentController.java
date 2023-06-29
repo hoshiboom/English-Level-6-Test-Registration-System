@@ -93,7 +93,7 @@ public class StudentController {
     }
 
     @RequestMapping(value = "/studentByIDNumber",method = RequestMethod.GET)
-    public Response getStudent(@RequestParam(value="idNumber",required = true)Integer idNumber){
+    public Response getStudent(@RequestParam(value="idNumber",required = true)String idNumber){
         return studentService.getStudent(idNumber);
     }
 }

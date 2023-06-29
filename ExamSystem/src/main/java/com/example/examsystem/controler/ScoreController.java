@@ -3,12 +3,14 @@ package com.example.examsystem.controler;
 
 import com.example.examsystem.dto.Response;
 import com.example.examsystem.dto.ResponseEnum;
+import com.example.examsystem.entity.Score;
 import com.example.examsystem.service.ScoreService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 @Slf4j
 @Validated
@@ -29,5 +31,11 @@ public class ScoreController {
 
 
         return scoreService.getScore(studentId,paperInfoId);
+    }
+
+    @RequestMapping(value ="allscore", method = RequestMethod.GET)
+    public Response getAllScore(@RequestParam(value = "studentId",required = true) Integer studentId){
+
+        return scoreService.getAllscore(studentId);
     }
 }

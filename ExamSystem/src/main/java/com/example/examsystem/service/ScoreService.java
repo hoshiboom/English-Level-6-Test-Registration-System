@@ -10,4 +10,6 @@ public interface ScoreService extends IService<Score> {
     Response getScore(Integer studentId, Integer paperInfoId);
 
     Response updateScore(Integer studentId, Integer paperInfoId);
+
+    Response getAllscore(Integer studentId);
 }

@@ -67,7 +67,7 @@ public class StudentServiceImpl extends ServiceImpl<StudentMapper, Student> impl
     }
 
     @Override
-    public Response getStudent(Integer idNumber) {
+    public Response getStudent(String idNumber) {
         Student Studenttest = this.getOne(
                 new QueryWrapper<Student>().eq("id_number",idNumber)
         );
