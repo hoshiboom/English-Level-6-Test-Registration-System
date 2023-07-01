@@ -3,6 +3,8 @@
 <head>
   <title>六级考试报考系统 - 考试报名</title>
   <meta charset="UTF-8">
+  <script src="sign.mjs" type="module"></script>
+
 
   <style>
     body {
@@ -67,6 +69,7 @@
       <label for="name">姓名:</label>
       <input type="text" id="name" name="name" placeholder="请输入姓名" required>
     </div>
+    <!--
     <div class="form-group">
       <label for="email">邮箱:</label>
       <input type="email" id="email" name="email" placeholder="请输入邮箱" required>
@@ -75,10 +78,12 @@
       <label for="phone">电话:</label>
       <input type="tel" id="phone" name="phone" placeholder="请输入电话" required>
     </div>
+    -->
     <div class="form-group">
-      <label for="student-id">ID号:</label>
-      <input type="text" id="student-id" name="student-id" placeholder="请输入ID号" required>
+      <label for="studentID">ID号:</label>
+      <input type="text" id="studentID" name="studentID" placeholder="请输入ID号" required>
     </div>
+    <!--
     <div class="form-group">
       <label for="university">所在大学:</label>
       <input type="text" id="university" name="university" placeholder="请输入所在大学" required>
@@ -93,47 +98,14 @@
     </div>
     <div class="form-group">
       <label for="exam-date">考试日期:</label>
-      <input type="date" id="exam-date"            name="exam-date" required>
+      <input type="date" id="exam-date" name="exam-date" required>
     </div>
-    <button type="submit" class="btn-submit">提交报名</button>
+    -->
+    <input type="submit" value="提交报名" id="sign-button" class="btn-submit">
   </form>
 </div>
 
-<script>
-  document.getElementById('registration-form').addEventListener('submit', function(event) {
-    event.preventDefault(); // 阻止表单提交
 
-    // 清空页面内容
-    document.body.innerHTML = '';
-
-    // 创建报名成功提示元素
-    var successMessage = document.createElement('h2');
-    successMessage.textContent = '报名成功！现在跳转至缴费页面...';
-    document.body.appendChild(successMessage);
-
-    // 创建倒计时元素
-    var countdown = document.createElement('h2');
-    countdown.textContent = '3';
-    countdown.style.textAlign = 'center';
-    document.body.appendChild(countdown);
-
-    // 倒计时函数
-    function startCountdown() {
-      var count = 3;
-      var timer = setInterval(function() {
-        countdown.textContent = count;
-        count--;
-        if (count < 0) {
-          clearInterval(timer);
-          window.location.href = 'pay.html'; // 跳转到缴费页面
-        }
-      }, 1000);
-    }
-
-    // 启动倒计时
-    startCountdown();
-  });
-</script>
 </body>
 </html>
 
