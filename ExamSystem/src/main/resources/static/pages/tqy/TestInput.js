@@ -183,6 +183,7 @@ function InputCheck()
         var answers=document.getElementById("testanswer");
         answers.disabled=false;
         var scoresinput=document.getElementById("testscore");
+        scoresinput.disabled=false;
         choiceA.value='';
         choiceB.value='';
         choiceC.value='';
@@ -190,7 +191,7 @@ function InputCheck()
         scoresinput.value='';
         scoresinput.disabled=false;
     }
-    else if(ValueTestType==2)//填空题，设置选项不可填，分值设定为3.55
+    else if(ValueTestType==2)//填空题，设置选项不可填，分值设定为3
     {
         cur_type=2;
         var choiceA=document.getElementById("testdescriptionA");

@@ -115,8 +115,17 @@ function querySubmit() {
         alert("请输入身份证号");
         return;
     }
+    //判断姓名合法性
+    const pattern = /^[\u4e00-\u9fa5]+$/;
     //判断一下身份证输入规格正确性
     var regex = /^\d+[X\d]?$/;
+    if (!pattern.test(name))
+    {
+        alert("姓名必须只包含中文！");
+        tempname.value='';
+        tempid.value='';
+        return;
+    }
     if (!regex.test(sfzid))
     {
         alert("身份证号码必须为任意多个数字组成且最后一位可能为X或数字的字符串！");
@@ -147,6 +156,11 @@ function querySubmit() {
         }
         else//查询成功
         {
+            if(data.data.name!=tempname.value)
+            {
+                alert("输入的姓名与身份证段不匹配，请重新输入");
+                return;
+            }
             console.log("查询成功");
             const params = new URLSearchParams();
             params.append('responseId', responseData.data.id);
