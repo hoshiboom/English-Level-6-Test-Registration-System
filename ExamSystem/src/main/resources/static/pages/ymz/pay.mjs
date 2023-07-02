@@ -1,5 +1,5 @@
 import {requests}  from "./http.mjs";
-const stu_token = "eyJhbGciOiJIUzI1NiJ9.eyJyb2xlSWQiOjMsIm5hbWUiOiIxIiwiaWQiOjEsImV4cCI6MTY4ODI1MzEwOX0.8sVKfnMl4ZGqy22USnVwf2GlJSvrk4BTz5A2bVWRy2E";
+const stu_token = "eyJhbGciOiJIUzI1NiJ9.eyJyb2xlSWQiOjMsIm5hbWUiOiIxIiwiaWQiOjEsImV4cCI6MTY4ODMxNzk2Nn0.ZkhpRT5PydBfUFGmdRcEyUCW0UiGkdNiUyHVmnxY6X0";
 var token;
 //var amount;
 
@@ -41,5 +41,5 @@ document.getElementById("pay-button").addEventListener("click", function()
     event.preventDefault()
     alert('缴费成功！');
     // 跳转到另一个界面
-    window.location.href = "./exam.html";
+    window.location.href = "../lkx/student.html";
 });
