@@ -49,7 +49,7 @@ public class LoginController {
             claims.put("id", a.getId());
             claims.put("roleId", 1);
             claims.put("name",a.getName());
-            return new Response(ResponseEnum.Login_Success,JwtUtils.generateToken(claims), 1);
+            return new Response(ResponseEnum.Login_Success,JwtUtils.generateToken(claims), a,1);
         }
         else{
             return new Response(ResponseEnum.Login_Failure);
@@ -66,7 +66,7 @@ public class LoginController {
             claims.put("id", a.getId());
             claims.put("roleId", 2);
             claims.put("name",a.getName());
-            return new Response(ResponseEnum.Login_Success,JwtUtils.generateToken(claims), 1);
+            return new Response(ResponseEnum.Login_Success,JwtUtils.generateToken(claims), a,1);
         }
         else{
             return new Response(ResponseEnum.Login_Failure);
@@ -83,7 +83,7 @@ public class LoginController {
             claims.put("id", a.getId());
             claims.put("roleId", 3);
             claims.put("name",a.getName());
-            return new Response(ResponseEnum.Login_Success,JwtUtils.generateToken(claims), 1);
+            return new Response(ResponseEnum.Login_Success,JwtUtils.generateToken(claims), a,1);
         }
         else{
             return new Response(ResponseEnum.Login_Failure);

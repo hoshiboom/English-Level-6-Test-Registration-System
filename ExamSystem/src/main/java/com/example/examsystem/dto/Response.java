@@ -40,4 +40,12 @@ public class Response {
         this.token = jwt;
     }
 
+    public Response(ResponseEnum responseEnum, String jwt, Object data,Integer flag) {
+        this.msg = responseEnum.getMsg();
+        this.code = responseEnum.getCode();
+        this.data = data ;
+        this.date = new Date();
+        this.token = jwt;
+    }
+
 }

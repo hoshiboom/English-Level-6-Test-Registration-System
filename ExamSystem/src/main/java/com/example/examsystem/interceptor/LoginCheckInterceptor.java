@@ -56,7 +56,6 @@ public class LoginCheckInterceptor implements HandlerInterceptor {
         }
         // 6.判断令牌是否正确
         try {
-
             Claims claim = JwtUtils.parseJWT(token);
             Integer roleId = claim.get("roleId", Integer.class);
             if (roleId == 1) {
