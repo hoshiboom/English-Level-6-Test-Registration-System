@@ -1,5 +1,5 @@
 import {requests}  from "./http.mjs";
-const admin_token = "eyJhbGciOiJIUzI1NiJ9.eyJyb2xlSWQiOjEsIm5hbWUiOiJoaSIsImlkIjoyLCJleHAiOjIxNTg1MDI0ODh9.ZHjqCg-bjcDjfwRQemntQ2UjNu87XVl32EjsbsASV10";
+//const admin_token = "eyJhbGciOiJIUzI1NiJ9.eyJyb2xlSWQiOjEsIm5hbWUiOiJoaSIsImlkIjoyLCJleHAiOjIxNTg1MDI0ODh9.ZHjqCg-bjcDjfwRQemntQ2UjNu87XVl32EjsbsASV10";
 var token;
 
 document.getElementById("login-button").addEventListener("click", function() {
@@ -22,10 +22,11 @@ document.getElementById("login-button").addEventListener("click", function() {
         console.log(data);
         console.log(data.code);
         if (data.code === 2001041) {
-            // 将 token 声明在全局作用域中
+            alert("登录成功！");
             token = data.token;
-            // 跳转到另一个界面
-            window.location.href = "./student.html";
+            const params=new URLSearchParams();
+            params.append('cur_token', token);
+            window.location.href = "./student.html?"+params.toString();
         } else {
             // 不是2001041则弹出提示框
             alert("操作失败，请重试或联系管理员。");
